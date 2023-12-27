@@ -1,0 +1,51 @@
+---
+title: "Day 1 Mini Problem Set for R Tutorial"
+author: "Your Name"
+date: "Date"
+output: pdf_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+Introduction
+This problem set is designed to reinforce the concepts you've learned in the R Tutorial. Try to solve each problem using the knowledge you've gained. If you get stuck, refer back to the tutorial or seek help from your instructor or peers.
+s
+Problem 1: Basic Operations
+Create two numeric variables with any values and perform basic arithmetic operations (addition, subtraction, multiplication, division) on them.
+Assign the result of a division to a new variable and print it.
+{r
+Copy code
+# Your code for Problem 1 here
+Problem 2: Working with Vectors
+Create a numeric vector with at least 5 elements.
+Compute the sum and mean of the vector.
+Use a logical comparison to identify which elements of the vector are greater than the mean.
+{r
+Copy code
+# Your code for Problem 2 here
+Problem 3: Basic Data Frame Manipulation
+Create a data frame with at least 3 columns and 5 rows. The columns should include a mix of numeric, character, and logical data types.
+Print the entire data frame.
+Print only the second column of the data frame.
+{r
+Copy code
+# Your code for Problem 3 here
+Problem 4: Loop and Function
+Write a function that takes a numeric input and returns the square of the number.
+Use a for loop to apply this function to each element of a numeric vector.
+Store the results in a new vector and print it.
+{r
+Copy code
+# Your code for Problem 4 here
+Problem 5: Conditional Logic
+Using the data frame created in Problem 3, write an if statement inside a loop to perform a conditional operation (e.g., if a number in a numeric column is even, replace it with half its value).
+Print the modified data frame.
+{r
+Copy code
+# Your code for Problem 5 here
+Problem 6: Reflect
+Write a brief reflection (2-3 sentences) on what you found challenging and what you learned from this problem set.
+
+{r
+Copy code
+# Your reflection for Problem 6 here
