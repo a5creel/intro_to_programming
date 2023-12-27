@@ -12,10 +12,20 @@ Each day will consist of two lectures in the morning (60-80 minutes with a 30-mi
 Class time: 9:30 to approximately noon 
 Room: G01 in Kroon
 
+
 The workshop is prepared and taught by Andie Creel. 
+
 andie.creel@yale.edu
+
 Office hours: 2 - 5 pm
+
 Office: 301 Prospect, Room 101
+
+
+The teaching fellow is Eliana Stone
+
+eliana.stone@yale.edu
+
 
 
 # Material 
