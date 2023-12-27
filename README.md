@@ -9,8 +9,8 @@ Each day will consist of two lectures in the morning (60-80 minutes with a 30-mi
 
 ### Logistics 
 
-Class time: 9:30 to approximately noon 
-Room: G01 in Kroon
+- Class time: 9:30 to approximately noon 
+- Room: G01 in Kroon
 
 
 The workshop is prepared and taught by Andie Creel. 
