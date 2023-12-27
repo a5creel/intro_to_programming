@@ -25,7 +25,7 @@ The teaching fellow is Eliana Stone
 # Material 
 
 ### Day One 
-- Lecture one: [Thinking Like A Computer](lecture_material/1_think_like_computer.pptx)
+- Lecture one: [Thinking Like A Computer](lecture_material/1_think_like_computer.pdf)
 	- what's programming
 	- definitions 
 	- problem definition and solution
