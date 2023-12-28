@@ -96,7 +96,7 @@ myInt <- 1
 # Numeric -- double: decimal points
 myNum <- 2.4
 
-# logical (Boolean): a true/false statement
+# logical (Boolean): a true/false statement. Use () to evaluate if something is true or false
 myBool_1 <- (3 < 4)
 myBool_2 <- (3 > 4)
 
