@@ -1,5 +1,5 @@
 ---
-title: "R Tutorial"
+title: "Day 1, Lecture 2: Base R"
 author: "Andie Creel"
 date: "January, 2023"
 output: pdf_document
@@ -153,24 +153,24 @@ myDF$nonsense <- myDF$age_yr + myDF$weight_lb
 
 ```{r}
 # Create the data frame
-BMI <- 	data.frame(
+myPpl <- 	data.frame(
    gender = c("Male", "non-binary","Female"), 
    male = c(T, F, F),
    height = c(152, 171.5, 165), 
    weight = c(81, 93, 78),
-   Age = c(42,38,26)
+   age = c(42,38,26)
 )
 
 # Try referencing one column
-BMI$male # version 1
-BMI[,2] #version 2
+myPpl$male # version 1
+myPpl[,2] #version 2
 
 # Try referencing one row 
-BMI[1,]
+myPpl[1,]
 
 # Try referencing one cell
-BMI$height[1] # version 1
-BMI[1,3] # version 2
+myPpl$height[1] # version 1
+myPpl[1,3] # version 2
 
 
 ```
@@ -260,13 +260,13 @@ for (i in 1:4){
 
 
 # manipulating a column (from above: version one of referencing a cell)
-for (i in 1:length(BMI$Age)) {
-  BMI$Age[i] <- BMI$Age[i] + 1 # everyone aged on year
+for (i in 1:length(myPpl$age)) {
+  myPpl$age[i] <- myPpl$age[i] + 1 # everyone aged one year
 }
 
 # Making a new column 
-for (i in 1:length(BMI$Age)) {
-  BMI$Age[i] <- BMI$Age[i] + 1 # everyone aged one year
+for (i in 1:length(myPpl$age)) {
+  myPpl$age_new[i] <- myPpl$age[i] + 1 # everyone aged one year
 }
 ```
 
@@ -274,7 +274,7 @@ for (i in 1:length(BMI$Age)) {
 ## If statements
 
 - sometimes you want to execute a task ONLY if a certain condition is met. 
-- Open the BMI df:
+- Open the myPpl df:
   - Our RA did not record men's ages right 
   - All men are actually 3 years younger than what's recorded
   - What would the correct DF look like?
@@ -283,12 +283,12 @@ for (i in 1:length(BMI$Age)) {
 
 ```{r}
 # goes through each row and changes age if someone is male
-for (i in 1:length(BMI$male)) {
+for (i in 1:length(myPpl$male)) {
  
-   if (BMI$male[i] == TRUE) {
-    BMI$Age_new[i] <- BMI$Age[i] - 3
+   if (myPpl$male[i] == TRUE) {
+    myPpl$age_new_m[i] <- myPpl$age[i] - 3
   }else{
-    BMI$Age_new[i] <- BMI$Age[i]
+    myPpl$age_new_m[i] <- myPpl$age[i]
   }
 }
 
