@@ -42,10 +42,10 @@ The teaching fellow is Eliana Stone
 	- If Else statements 
 	
 ### Day Two 
-- Lecture three: [Data Manipulation with Tidyverse](lecture_material/3_data_management/data_manip_tidyverse.pdf)
+- Lecture three: [Data Manipulation with Tidyverse](lecture_material/3_data_management/data_manip_tidyverse.pdf) 
 
-	  - `mutate()`
     - `if_else()`
+    - `mutate()`
     - `filter()`
     - `select()`
     - `group_by()`
