@@ -31,8 +31,8 @@ The goal of this lecture is:
 Backing up and remembering we're scientists
 
 - We will have a hypothesis of how the world works
-- We want to contruct a model that approximates that 
-- We need data from real work to build that model that approximates the world
+- We want to construct a model that approximates that 
+- We need data from real world to build that model that approximates the world
 - The data we have may not be set up to be plugged into the model we'd like to run
 - However, it could be *manipulated* so that we can use the data we have with the model we want
 
@@ -103,7 +103,7 @@ library(ggplot2)
     - It's faster and more memory efficient (good for large datasets)
     - It's easier to read
 
-### Examples from yesterday 
+## Examples from yesterday 
 
 ```{r}
 # -------------------------------------------------------------------------
@@ -139,8 +139,9 @@ myDplyr <- myDplyr %>%
 
 **New things introduced** 
 
-- Pipes %>%: pipes take input (in this case, our dataframe) and pass it onto the next function. You can chain them together.
-- `mutate()` mutate is a function that is fed a data frame (from the pipe) and then can change a variable (in this case, the column age)
+- Pipes %>%: pipes take input (our dataframe) and passes it onto the next function. You can chain pipes together.
+- `mutate()` mutate is a function from the dplyr package 
+- A data frame is piped to the function `mutate()` and then the function executes some small function you gave it (age +1) and returns the new value
 
 
 ```{r}
@@ -163,7 +164,8 @@ myDplyr <- myDplyr %>%
 ```
 
 **New things introduced** 
-- `mutate()` not only can change a variable, but it can construct a new one.
+
+- `mutate()` can also construct a new a new column
 
 ```{r}
 # -------------------------------------------------------------------------
@@ -186,10 +188,191 @@ myDplyr <- myDplyr %>%
 # Check if identical 
 (myBase == myDplyr)
 
+```
+
+**New things introduced** 
+
+- `if_else()` combined with `mutate()`
+    - the first part is what you're evaluating to check if it's true (`male == TRUE`)
+    - Next entry is what to return if true (`age - 3`)
+    - Final part is what to return if false (`age`)
+
+
+## New functions in the dplyr package
+
+Now, let's introduce some more functions that are helpful for data cleaning that we haven't seen yet. 
+
+```{r}
+# -------------------------------------------------------------------------
+# make a data frame of employees
+# -------------------------------------------------------------------------
+myEmps <- data.frame(
+  id = 1:5,
+  name = c("Alice", "Bob", "Charlie", "David", "Eva"),
+  department = c("IT", "Marketing", "HR", "Marketing", "IT"),
+  salary = c(45000, 55000, 40000, 60000, 50000)
+)
+
+myEmps
+```
+
+### `filter()`
+You have a data set, and want subset to only some observations conditioned on something. 
+
+Ex 1: You just want people in the marketing department 
+
+```{r}
+# -------------------------------------------------------------------------
+# filter
+# -------------------------------------------------------------------------
+myEmp_marketing <- myEmps %>% 
+  filter(department == "Marketing")
+
+myEmp_marketing
+
+
+```
+
+Ex 2: you have missing variables and need to drop those observations (a lot of models will require you to do this)
+
+```{r}
+# -------------------------------------------------------------------------
+# filter NAs
+# -------------------------------------------------------------------------
+
+# example df
+myNAs <- data.frame(
+  id = 1:7,
+  name = c("Andie", "Bridger", "Nancy", "Scott", "Alex", "Tash", "Kenz"),
+  age = c(25, 30, NA, 28, 35, NA, "40")
+)
+
+# filter NAs
+myNAs_filter <- myNAs %>% 
+  filter(!is.na(age))
+
+myNAs_filter # id 3 and 6 are dropped now
 
 ```
 
 
 
+
+### `select()`
+
+You have a data set with more columns than you need. Sometimes you want to only work with some of the variables, and it is space efficient to get rid of the rest. 
+
+Ex: You want to "anonymize" the data by dropping people's name
+
+```{r}
+# -------------------------------------------------------------------------
+# select
+# -------------------------------------------------------------------------
+myEmp_thin <- myEmps %>% 
+  select(id, department, salary)
+
+myEmp_thin
+
+```
+
+### `group_by()`
+
+You need to group by a variable, and then run a function on those groups. For example, you want to know the total amount of salary for each department. 
+
+
+```{r}
+# -------------------------------------------------------------------------
+# group_by
+# -------------------------------------------------------------------------
+myEmps_grouped <- myEmps %>%
+  group_by(department) %>%
+  mutate(dept_total_salary = sum(salary)) %>% 
+  ungroup(department)
+
+myEmps_grouped
+  
+```
+
+### `summarize()`
+
+When used with group by, can give you fast and simple summaries of the data table. 
+
+Ex. you're interested in some stats about the department 
+
+```{r}
+# -------------------------------------------------------------------------
+# summarize
+# -------------------------------------------------------------------------
+myEmp_summary <- myEmps %>% 
+  group_by(department) %>% 
+  summarize(avg_sal = mean(salary), # avg salary by department
+            num_employees = n()) # number of employess
+
+myEmp_summary
+```
+
+
+**Quick note on the `n()` function:** it looks like is didn't get an input, but remember we used all the pipes. The `n()` function is designed to be used with the `summarize()` function and return how many observations are in a group. 
+
+
+### join() functions
+
+You may need data from multiple data sets to be in one data set. We do this with `join()` functions. The most common is `left_join()`, but you may also see `right_join()`, `inner_join()`, and `full_join()`.
+
+A `left_join()` adds variables from a second dataset to your first. This is what I almost exclusively use. 
+
+```{r}
+# -------------------------------------------------------------------------
+# create second dataset
+# -------------------------------------------------------------------------
+myDepts <- data.frame(
+  department = c("IT", "Marketing", "HR"),
+  location = c("Building A", "Building B", "Building C"),
+  boss = c("John Doe", "Jane Smith", "Mike Brown")
+)
+
+# -------------------------------------------------------------------------
+# left_join
+# -------------------------------------------------------------------------
+myEmps_join<- left_join(x = myEmps, y = myDepts, by = "department")
+myEmps_join
+
+```
+
+
+# Manipulating and cleaning with tidyr
+
+### `pivot_longer()`
+
+Sometimes you'll want to pivot your data longer. For example, if you want to have month be a variable in a regression (where you control for the month), but instead there are 12 columns for the month. You can pivot those columns into one column called `month`.
+
+```{r}
+# -------------------------------------------------------------------------
+# Create data set
+# -------------------------------------------------------------------------
+myTemps <- data.frame(
+  location = c("Forest", "Desert"),
+  Jan = c(5, 20),
+  Feb = c(6, 22),
+  Mar = c(10, 25)
+)
+myTemps
+
+
+# -------------------------------------------------------------------------
+# pivot longer
+# -------------------------------------------------------------------------
+myTemps_long <- myTemps %>% 
+  pivot_longer(
+  cols = Jan:Mar, 
+  names_to = "Month", 
+  values_to = "Temperature"
+)
+myTemps_long
+
+```
+
+
+### `pivot_wider()`
 
 
