@@ -36,7 +36,7 @@ They act as an address for your computer to recognize that everything in that pr
 
 1) Open R Studio 
 2) File/New Project... (alternatively, little clear box with R button)
-3) Navigate to file you want the r project to exist in
+3) Navigate to the file you want the r project to exist in. **Make sure you can find this again so that we can drag folders into it.**
 4) Give it a short, informative name 
 5) Done! Notice you're top right hand corner.. you're R Studio session has loaded your R Project
 
@@ -45,22 +45,19 @@ They act as an address for your computer to recognize that everything in that pr
 # File Structure 
 
 - File structure can make or break a research project
-  - Functions as an outline that gives you forward momentum 
+  - Acts as an outline that gives you forward momentum 
   - Allows your collaborators to clearly follow what you did 
   - Allows you to return to a project after and quickly remember what step you were on and what remains to be done 
 - There are best practices for file structure that are worth following now
 
 ## Best practices 
 
-Special thanks to Matt Wibbenmeyer (fellow at RFF) who wrote a Notes on Project Management and Collaboration for RFF RAs and interns that I still use. It is worth reading and you can find it [here](lecture_material/4_data_manage_vis/Wibbenmeyer_notes_proj_collab.pdf)
+Matt Wibbenmeyer (fellow at RFF) wrote a Notes on Project Management and Collaboration for RFF RAs and interns that I still use. It is worth reading and you can find it [here](https://github.com/a5creel/intro_to_programming/blob/993d477efd65d69e3813dad8434fa7a46b7b7bbc/lecture_material/4_data_manage_vis/Wibbenmeyer_notes_proj_collab.pdf). I share it with all my RAs and collaborators.
 
-
-There will be your **project** `project/`. This is the file your R Project files lives. Everything else will be in this folder or sub folders. 
-
-**subfolders**
+There will be your **project** `project/`. This is the file your R Project files lives. Everything else will be in this folder or sub folders. I typically have the following sub folders. 
 
 - `data/`
-    - `raw_data/`: The orginal data. Do not edit this! You never know when what you originally thought was a good idea was actually bad. Always keep a copy of your original data here. 
+    - `raw_data/`: The original data. Do not edit this! You never know when what you originally thought was a good idea was actually bad. Always keep a copy of your original data here. 
     - `clean_data/`: Where you store the clean data sets that you'll use for your models
 - `scripts/`: all of the r scripts you write 
     - `1_data_cleaning.R`
@@ -71,8 +68,12 @@ There will be your **project** `project/`. This is the file your R Project files
 - `manuscript/`: where you store your writing that (figures crossed) becomes your paper
 - `presentations/`: Any presentations you prepare for the research project
     
+*In our new r project, let's create a clean and raw data, scrip, and result sub folder. You can do this with the file-green-plus button in the files tap of our bottom right corner.*
 
 
+# Importing Data
+
+You can import a lot of different data sets in a lot of different ways. 
 
 
 
