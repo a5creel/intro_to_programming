@@ -1,0 +1,90 @@
+---
+title: "Day 2, Lecture Two: Data Management and Visualization"
+author: "Andie Creel"
+date: "January, 2023"
+output: 
+  pdf_document:
+    number_sections: true
+urlcolor: blue
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+rm(list=ls())
+```
+
+# Goal
+The goal of this lecture is:
+
+1) Learn how to set up an R Project 
+2) Learn best practices for file structures
+3) Importing data 
+4) Basic data visualization with ggplot 
+5) Exporting results 
+
+# Creating an R Project
+
+## What's an R Project?
+
+An R project contains multiple scripts, your data, results you export, and any other files you have associated with that project. 
+
+R projects are an extremely useful organizational tool, and you should use them for every research project. 
+
+They act as an address for your computer to recognize that everything in that project stays together. 
+
+## New R Project
+
+1) Open R Studio 
+2) File/New Project... (alternatively, little clear box with R button)
+3) Navigate to file you want the r project to exist in
+4) Give it a short, informative name 
+5) Done! Notice you're top right hand corner.. you're R Studio session has loaded your R Project
+
+*Do this as a group together.*
+
+# File Structure 
+
+- File structure can make or break a research project
+  - Functions as an outline that gives you forward momentum 
+  - Allows your collaborators to clearly follow what you did 
+  - Allows you to return to a project after and quickly remember what step you were on and what remains to be done 
+- There are best practices for file structure that are worth following now
+
+## Best practices 
+
+Special thanks to Matt Wibbenmeyer (fellow at RFF) who wrote a Notes on Project Management and Collaboration for RFF RAs and interns that I still use. It is worth reading and you can find it [here](lecture_material/4_data_manage_vis/Wibbenmeyer_notes_proj_collab.pdf)
+
+
+There will be your **project** `project/`. This is the file your R Project files lives. Everything else will be in this folder or sub folders. 
+
+**subfolders**
+
+- `data/`
+    - `raw_data/`: The orginal data. Do not edit this! You never know when what you originally thought was a good idea was actually bad. Always keep a copy of your original data here. 
+    - `clean_data/`: Where you store the clean data sets that you'll use for your models
+- `scripts/`: all of the r scripts you write 
+    - `1_data_cleaning.R`
+    - `2_descriptives.R`
+    - `3_analysis.R`
+    - `4_figures.R`
+- `results/`: where you store final graphs and tables 
+- `manuscript/`: where you store your writing that (figures crossed) becomes your paper
+- `presentations/`: Any presentations you prepare for the research project
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

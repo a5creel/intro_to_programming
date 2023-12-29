@@ -9,8 +9,8 @@ urlcolor: blue
 ---
 
 ```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE)
-rm(list=ls())
+knitr::opts_chunk$set(echo = TRUE) # lets us see code in the pdf
+rm(list=ls()) # clears the enviroment 
 ```
 
 How I'd recommend following along for this lecture: have the pdf in front of you so you can follow along some of the points, but mostly write the code and comments in a script or R markdown. 
@@ -210,7 +210,10 @@ myDplyr <- myDplyr %>%
     - Final part is what to return if false (`age`)
 
 
-## New functions in the dplyr package
+## New functions in the dplyr package: `filter()`
+You have a data set, and want subset to only some observations conditioned on something. 
+
+Ex 1: You just want people in the marketing department 
 
 ```{r}
 # -------------------------------------------------------------------------
@@ -224,14 +227,7 @@ myEmps <- data.frame(
 )
 
 myEmps
-```
 
-### `filter()`
-You have a data set, and want subset to only some observations conditioned on something. 
-
-Ex 1: You just want people in the marketing department 
-
-```{r}
 # -------------------------------------------------------------------------
 # filter
 # -------------------------------------------------------------------------
@@ -268,7 +264,7 @@ myNAs_filter # id 3 and 6 are dropped now
 
 
 
-### `select()`
+## `select()`
 
 You have a data set with more columns than you need. Sometimes you want to only work with some of the variables, and it is space efficient to get rid of the rest. 
 
@@ -285,7 +281,7 @@ myEmp_thin
 
 ```
 
-### `group_by()`
+## `group_by()`
 
 You need to group by a variable, and then run a function on those groups. For example, you want to know the total amount of salary for each department. 
 
@@ -303,7 +299,7 @@ myEmps_grouped
   
 ```
 
-### `summarize()`
+## `summarize()`
 
 When used with group by, can give you fast and simple summaries of the data table. 
 
@@ -325,7 +321,7 @@ myEmp_summary
 **Quick note on the `n()` function:** it looks like is didn't get an input, but remember we used all the pipes. The `n()` function is designed to be used with the `summarize()` function and return how many observations are in a group. 
 
 
-### join() functions
+## join() functions
 
 You may need data from multiple data sets to be in one data set. We do this with `join()` functions. 
 
@@ -360,7 +356,7 @@ Just like `dplyr`, `tidyr` has loads of very useful functions. There are two tha
 - `pivot_wider()`
 
 
-### `pivot_longer()`
+## `pivot_longer()`
 
 Sometimes you'll want to pivot your data longer. Most models I work will require data to be formatted so that they are "long" by variables because that's usually the format best for regression models.
 
@@ -394,7 +390,7 @@ myTemps_long
 ```
 
 
-### `pivot_wider()`
+## `pivot_wider()`
 
 I usually pivot data frames from a long format to a wide format when the model I want to aggregate the data i.e., I want the data to be *less* granular. Usually you want data to me more grandular, but there are cases where one data set is less granular than another, and so you need them to match in order to merge them together. 
 
