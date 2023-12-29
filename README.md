@@ -40,3 +40,16 @@ The teaching fellow is Eliana Stone
 	- Functions
 	- Loops
 	- If Else statements 
+	
+### Day Two 
+- Lecture three: [Data Manipulation with Tidyverse](lecture_material/3_data_management/data_manip_tidyverse.pdf)
+	  - `mutate()`
+    - `if_else()`
+    - `filter()`
+    - `select()`
+    - `group_by()`
+    - `summarize()`
+    - `left_join()`
+    - `pivot_longer()`
+    - `pivot_wider()`
+	

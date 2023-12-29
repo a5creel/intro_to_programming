@@ -354,6 +354,12 @@ myEmps_join
 
 # Manipulating and cleaning with tidyr
 
+Just like `dplyr`, `tidyr` has loads of very useful functions. There are two that I think are the most important to be aware of
+
+- `pivot_longer()`
+- `pivot_wider()`
+
+
 ### `pivot_longer()`
 
 Sometimes you'll want to pivot your data longer. Most models I work will require data to be formatted so that they are "long" by variables because that's usually the format best for regression models.
