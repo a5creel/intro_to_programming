@@ -73,7 +73,84 @@ There will be your **project** `project/`. This is the file your R Project files
 
 # Importing Data
 
-You can import a lot of different data sets in a lot of different ways. 
+You can import a lot of different data sets in a lot of different ways. The most common data sets I import are CSVs. 
+
+## Note on Excel Files
+I try to avoid going back and forth. Excel is useful for data entry (especially when you're collecting your data in the field). But once you're done with data collection, I would avoid going between R and Excel. 
+
+My advice would be to export your excel sheet to a csv. CSVs are more memory efficient and easier to read into R. However, if you edit the Excel file remember you'll need to re-export your csv. 
+
+Code for if you do need to read in an excel file instead of a csv. 
+
+```{r eval=FALSE}
+# -------------------------------------------------------------------------
+# Install (only once) and load the readxl package
+# -------------------------------------------------------------------------
+# install.packages("readxl")
+library(readxl)
+
+# -------------------------------------------------------------------------
+# read in an excel sheet 
+# -------------------------------------------------------------------------
+myData <- read_excel("raw_data/an_excel_file.xls", 
+                       sheet = "the_name_of_the_sheet_I_am_importing")
+
+```
+
+
+## Code for reading in a CSV so you have it
+There are a million ways to read in CSVs. Let's write out the code so you have it all. 
+
+```{r eval=FALSE}
+# -------------------------------------------------------------------------
+# Base r 
+#   Pro: no need to load package 
+#   Con: less efficient, slower, and worse at getting variable types right
+#   Use case: when you have a small and simple data set
+# -------------------------------------------------------------------------
+myData <- read.csv("/raw_data/an_imaginary_csv.csv")
+
+# -------------------------------------------------------------------------
+# Tidyverse package: readr
+#   Pro: faster, intuitive at predicting variables types
+#   Con: Requires a package
+#   Use case: almost all the time
+# -------------------------------------------------------------------------
+# install.packages("readr")
+library(readr)
+
+myData <- read_csv("/raw_data/an_imaginary_csv.csv")
+
+# -------------------------------------------------------------------------
+# Another package: vroom
+#   Pro: excellent for big data
+#   Con: a bit clunkier than readr
+#   Use case:  big data
+# -------------------------------------------------------------------------
+# install.packages("vroom")
+library(vroom)
+
+myData <- vroom("/raw_data/an_imaginary_csv.csv")
+
+```
+
+## Download and Read our CSV for today.
+
+```{r include=F}
+# -------------------------------------------------------------------------
+# This is where I downloaded the csv so I could write it to git hub 
+# -------------------------------------------------------------------------
+
+library(ggplot2)
+
+# get data loaded 
+data(mpg) 
+
+# write to raw data 
+write_csv(mpg, "raw_data/mpg.csv")
+
+
+```
 
 
 
