@@ -1,0 +1,97 @@
+manufacturer,model,displ,year,cyl,trans,drv,cty,hwy,class
+dodge,caravan 2wd,2.4,1999,4,auto(l3),f,18,24,minivan
+dodge,caravan 2wd,3,1999,6,auto(l4),f,17,24,minivan
+dodge,caravan 2wd,3.3,1999,6,auto(l4),f,16,22,minivan
+dodge,caravan 2wd,3.3,1999,6,auto(l4),f,16,22,minivan
+dodge,caravan 2wd,3.3,2008,6,auto(l4),f,17,24,minivan
+dodge,caravan 2wd,3.3,2008,6,auto(l4),f,17,24,minivan
+dodge,caravan 2wd,3.3,2008,6,auto(l4),f,11,17,minivan
+dodge,caravan 2wd,3.8,1999,6,auto(l4),f,15,22,minivan
+dodge,caravan 2wd,3.8,1999,6,auto(l4),f,15,21,minivan
+dodge,caravan 2wd,3.8,2008,6,auto(l6),f,16,23,minivan
+dodge,caravan 2wd,4,2008,6,auto(l6),f,16,23,minivan
+dodge,dakota pickup 4wd,3.7,2008,6,manual(m6),4,15,19,pickup
+dodge,dakota pickup 4wd,3.7,2008,6,auto(l4),4,14,18,pickup
+dodge,dakota pickup 4wd,3.9,1999,6,auto(l4),4,13,17,pickup
+dodge,dakota pickup 4wd,3.9,1999,6,manual(m5),4,14,17,pickup
+dodge,dakota pickup 4wd,4.7,2008,8,auto(l5),4,14,19,pickup
+dodge,dakota pickup 4wd,4.7,2008,8,auto(l5),4,14,19,pickup
+dodge,dakota pickup 4wd,4.7,2008,8,auto(l5),4,9,12,pickup
+dodge,dakota pickup 4wd,5.2,1999,8,manual(m5),4,11,17,pickup
+dodge,dakota pickup 4wd,5.2,1999,8,auto(l4),4,11,15,pickup
+dodge,durango 4wd,3.9,1999,6,auto(l4),4,13,17,suv
+dodge,durango 4wd,4.7,2008,8,auto(l5),4,13,17,suv
+dodge,durango 4wd,4.7,2008,8,auto(l5),4,9,12,suv
+dodge,durango 4wd,4.7,2008,8,auto(l5),4,13,17,suv
+dodge,durango 4wd,5.2,1999,8,auto(l4),4,11,16,suv
+dodge,durango 4wd,5.7,2008,8,auto(l5),4,13,18,suv
+dodge,durango 4wd,5.9,1999,8,auto(l4),4,11,15,suv
+dodge,ram 1500 pickup 4wd,4.7,2008,8,manual(m6),4,12,16,pickup
+dodge,ram 1500 pickup 4wd,4.7,2008,8,auto(l5),4,9,12,pickup
+dodge,ram 1500 pickup 4wd,4.7,2008,8,auto(l5),4,13,17,pickup
+dodge,ram 1500 pickup 4wd,4.7,2008,8,auto(l5),4,13,17,pickup
+dodge,ram 1500 pickup 4wd,4.7,2008,8,manual(m6),4,12,16,pickup
+dodge,ram 1500 pickup 4wd,4.7,2008,8,manual(m6),4,9,12,pickup
+dodge,ram 1500 pickup 4wd,5.2,1999,8,auto(l4),4,11,15,pickup
+dodge,ram 1500 pickup 4wd,5.2,1999,8,manual(m5),4,11,16,pickup
+dodge,ram 1500 pickup 4wd,5.7,2008,8,auto(l5),4,13,17,pickup
+dodge,ram 1500 pickup 4wd,5.9,1999,8,auto(l4),4,11,15,pickup
+ford,expedition 2wd,4.6,1999,8,auto(l4),r,11,17,suv
+ford,expedition 2wd,5.4,1999,8,auto(l4),r,11,17,suv
+ford,expedition 2wd,5.4,2008,8,auto(l6),r,12,18,suv
+ford,explorer 4wd,4,1999,6,auto(l5),4,14,17,suv
+ford,explorer 4wd,4,1999,6,manual(m5),4,15,19,suv
+ford,explorer 4wd,4,1999,6,auto(l5),4,14,17,suv
+ford,explorer 4wd,4,2008,6,auto(l5),4,13,19,suv
+ford,explorer 4wd,4.6,2008,8,auto(l6),4,13,19,suv
+ford,explorer 4wd,5,1999,8,auto(l4),4,13,17,suv
+ford,f150 pickup 4wd,4.2,1999,6,auto(l4),4,14,17,pickup
+ford,f150 pickup 4wd,4.2,1999,6,manual(m5),4,14,17,pickup
+ford,f150 pickup 4wd,4.6,1999,8,manual(m5),4,13,16,pickup
+ford,f150 pickup 4wd,4.6,1999,8,auto(l4),4,13,16,pickup
+ford,f150 pickup 4wd,4.6,2008,8,auto(l4),4,13,17,pickup
+ford,f150 pickup 4wd,5.4,1999,8,auto(l4),4,11,15,pickup
+ford,f150 pickup 4wd,5.4,2008,8,auto(l4),4,13,17,pickup
+ford,mustang,3.8,1999,6,manual(m5),r,18,26,subcompact
+ford,mustang,3.8,1999,6,auto(l4),r,18,25,subcompact
+ford,mustang,4,2008,6,manual(m5),r,17,26,subcompact
+ford,mustang,4,2008,6,auto(l5),r,16,24,subcompact
+ford,mustang,4.6,1999,8,auto(l4),r,15,21,subcompact
+ford,mustang,4.6,1999,8,manual(m5),r,15,22,subcompact
+ford,mustang,4.6,2008,8,manual(m5),r,15,23,subcompact
+ford,mustang,4.6,2008,8,auto(l5),r,15,22,subcompact
+ford,mustang,5.4,2008,8,manual(m6),r,14,20,subcompact
+toyota,4runner 4wd,2.7,1999,4,manual(m5),4,15,20,suv
+toyota,4runner 4wd,2.7,1999,4,auto(l4),4,16,20,suv
+toyota,4runner 4wd,3.4,1999,6,auto(l4),4,15,19,suv
+toyota,4runner 4wd,3.4,1999,6,manual(m5),4,15,17,suv
+toyota,4runner 4wd,4,2008,6,auto(l5),4,16,20,suv
+toyota,4runner 4wd,4.7,2008,8,auto(l5),4,14,17,suv
+toyota,camry,2.2,1999,4,manual(m5),f,21,29,midsize
+toyota,camry,2.2,1999,4,auto(l4),f,21,27,midsize
+toyota,camry,2.4,2008,4,manual(m5),f,21,31,midsize
+toyota,camry,2.4,2008,4,auto(l5),f,21,31,midsize
+toyota,camry,3,1999,6,auto(l4),f,18,26,midsize
+toyota,camry,3,1999,6,manual(m5),f,18,26,midsize
+toyota,camry,3.5,2008,6,auto(s6),f,19,28,midsize
+toyota,camry solara,2.2,1999,4,auto(l4),f,21,27,compact
+toyota,camry solara,2.2,1999,4,manual(m5),f,21,29,compact
+toyota,camry solara,2.4,2008,4,manual(m5),f,21,31,compact
+toyota,camry solara,2.4,2008,4,auto(s5),f,22,31,compact
+toyota,camry solara,3,1999,6,auto(l4),f,18,26,compact
+toyota,camry solara,3,1999,6,manual(m5),f,18,26,compact
+toyota,camry solara,3.3,2008,6,auto(s5),f,18,27,compact
+toyota,corolla,1.8,1999,4,auto(l3),f,24,30,compact
+toyota,corolla,1.8,1999,4,auto(l4),f,24,33,compact
+toyota,corolla,1.8,1999,4,manual(m5),f,26,35,compact
+toyota,corolla,1.8,2008,4,manual(m5),f,28,37,compact
+toyota,corolla,1.8,2008,4,auto(l4),f,26,35,compact
+toyota,land cruiser wagon 4wd,4.7,1999,8,auto(l4),4,11,15,suv
+toyota,land cruiser wagon 4wd,5.7,2008,8,auto(s6),4,13,18,suv
+toyota,toyota tacoma 4wd,2.7,1999,4,manual(m5),4,15,20,pickup
+toyota,toyota tacoma 4wd,2.7,1999,4,auto(l4),4,16,20,pickup
+toyota,toyota tacoma 4wd,2.7,2008,4,manual(m5),4,17,22,pickup
+toyota,toyota tacoma 4wd,3.4,1999,6,manual(m5),4,15,17,pickup
+toyota,toyota tacoma 4wd,3.4,1999,6,auto(l4),4,15,19,pickup
+toyota,toyota tacoma 4wd,4,2008,6,manual(m6),4,15,18,pickup
+toyota,toyota tacoma 4wd,4,2008,6,auto(l5),4,16,20,pickup

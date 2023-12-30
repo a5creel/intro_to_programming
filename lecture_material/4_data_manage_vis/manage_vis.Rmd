@@ -134,27 +134,134 @@ myData <- vroom("/raw_data/an_imaginary_csv.csv")
 
 ```
 
-## Download and Read our CSV for today.
-
-```{r include=F}
-# -------------------------------------------------------------------------
-# This is where I downloaded the csv so I could write it to git hub 
-# -------------------------------------------------------------------------
-
-library(ggplot2)
-
-# get data loaded 
-data(mpg) 
-
-# write to raw data 
-write_csv(mpg, "raw_data/mpg.csv")
-
+<!-- Something I ran so the next section was ready.  -->
+```{r include=F, eval=F}
+# # -------------------------------------------------------------------------
+# # Only for AC: This is where I downloaded the csv so I could write it to git hub 
+# # -------------------------------------------------------------------------
+# 
+# library(ggplot2)
+# 
+# # get data loaded 
+# data(mpg) 
+# 
+# # write to raw data 
+# write_csv(mpg, "raw_data/mpg.csv")
+# 
+# # test 
+# test <- read_csv("https://raw.githubusercontent.com/a5creel/intro_to_programming/main/lecture_material/4_data_manage_vis/raw_data/mpg.csv")
 
 ```
 
+# Today's example
+
+## Data Download and Clean
+
+First step: download csv and drag it into raw_data folder. 
+
+- Here is the link: [https://github.com/a5creel/intro_to_programming/blob/main/lecture_material/4_data_manage_vis/raw_data/mpg.csv](https://github.com/a5creel/intro_to_programming/blob/main/lecture_material/4_data_manage_vis/raw_data/mpg.csv)
+- Click the download button 
+- *Pull it into the `raw_data` file we created while going through file structure*
+
+*Create a script called `0_data_clean.R` in the `scripts` folder*
+
+```{r message=F, warning=FALSE}
+# Andie Creel / Goal: data cleaning / Started: January 11 2023
+
+# -------------------------------------------------------------------------
+# load libraries 
+# -------------------------------------------------------------------------
+library(readr) # reading in csv
+library(dplyr) # data cleaning 
+# library(ggplot2) # if we're fighting with get data loaded
+
+# -------------------------------------------------------------------------
+# read in: reading in data is slow, so i always call it _og in case 
+#     I regret something later and want to return to this step 
+# -------------------------------------------------------------------------
+myData_og <- read_csv("data/raw_data/mpg.csv")
+
+# alternatives in case this isn't working 
+# myData_og <- read_csv("https://raw.githubusercontent.com/a5creel/intro_to_programming/main/lecture_material/4_data_manage_vis/raw_data/mpg.csv")
+
+# data(mpg)
+# myData_og <- mpg
+# rm(mpg)
+
+# -------------------------------------------------------------------------
+# clean data: what we learned this morning
+# -------------------------------------------------------------------------
+
+# our research Q is:
+#   - only interested in Ford, dodge and toyota
+#   - not about the type of fuel "fl"
+myData <- myData_og %>%
+  filter(manufacturer == "ford" | manufacturer == "dodge" | manufacturer == "toyota") %>% 
+  select(-fl)
+  
+
+# write clean data 
+write_csv(myData, "data/clean_data/my_clean_data.csv")
+```
+
+
+## Data Vis
+
+- Normally, you'd do some more exploratory analysis in another file
+- You'd also do more data cleaning than this 
+- But we're going to move onto data visualization for times sake
+- We'll do 4 chats together to get a feel for it 
+- Then we'll polish one to see the times of things we can change. 
+
+*Create a `2_figures.R` script in the `scripts` folder*
+
+```{r message=F}
+# Andie Creel / Goal: create figures / Started: January 11 2023
+
+# -------------------------------------------------------------------------
+# load libraries 
+# -------------------------------------------------------------------------
+rm(list = ls()) # clear work space at beginning of script
+library(dplyr)
+library(readr)
+library(ggplot2)
+
+# -------------------------------------------------------------------------
+# read in clean data 
+# -------------------------------------------------------------------------
+myData <- read_csv("data/clean_data/my_clean_data.csv")
+
+# -------------------------------------------------------------------------
+# Scatter plot: geom_point()
+#   hwy: highway miles per gallon 
+#   displ: engine displacement which is approx. engine size
+# -------------------------------------------------------------------------
+
+#AC: run these one line at a time 
+ggplot(myData, aes(x = displ, y = hwy)) +
+  geom_point() +
+  labs(title = "Engine Displacement vs Highway MPG",
+       x = "Engine Displacement (litres)",
+       y = "Highway Miles per Gallon")
 
 
 
+
+
+
+# USE THE CHAT GPT THING TO GET THE REST TOGETHER. 
+
+
+
+
+
+ggplot(mpg, aes(x = factor(cyl), y = hwy)) +
+  geom_boxplot() +
+  labs(title = "Highway MPG Distribution by Cylinder Count",
+       x = "Number of Cylinders",
+       y = "Highway Miles per Gallon")
+
+```
 
 
 
