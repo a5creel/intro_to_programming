@@ -53,5 +53,6 @@ The teaching fellow is Eliana Stone
     - `left_join()`
     - `pivot_longer()`
     - `pivot_wider()`
+    
 - Lecture four: [Data Management and Visualization](lecture_material/4_data_manage_vis/manage_vis.pdf)
 	
