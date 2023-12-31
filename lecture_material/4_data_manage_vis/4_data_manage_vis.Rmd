@@ -54,7 +54,7 @@ They act as an address for your computer to recognize that everything in that pr
 
 Matt Wibbenmeyer (fellow at RFF) wrote a Notes on Project Management and Collaboration for RFF RAs and interns that I still use. It is worth reading and you can find it [here](https://github.com/a5creel/intro_to_programming/blob/993d477efd65d69e3813dad8434fa7a46b7b7bbc/lecture_material/4_data_manage_vis/Wibbenmeyer_notes_proj_collab.pdf). I share it with all my RAs and collaborators.
 
-There will be your **project** `project/`. This is the file your R Project files lives. Everything else will be in this folder or sub folders. I typically have the following sub folders. 
+There will be your `project/` folder. This is the file your R Project files lives. Everything else will be in this folder or sub folders. I typically have the following sub folders. 
 
 - `data/`
     - `raw_data/`: The original data. Do not edit this! You never know when what you originally thought was a good idea was actually bad. Always keep a copy of your original data here. 
@@ -68,7 +68,7 @@ There will be your **project** `project/`. This is the file your R Project files
 - `manuscript/`: where you store your writing that (figures crossed) becomes your paper
 - `presentations/`: Any presentations you prepare for the research project
     
-*In our new r project, let's create a clean and raw data, scrip, and result sub folder. You can do this with the file-green-plus button in the files tap of our bottom right corner.*
+*In our new r project, let's create a clean and raw `data`, `script`, and `results` sub folder. You can do this with the file-green-plus button in the files tap (bottom right corner).*
 
 
 # Importing Data
@@ -76,7 +76,7 @@ There will be your **project** `project/`. This is the file your R Project files
 You can import a lot of different data sets in a lot of different ways. The most common data sets I import are CSVs. 
 
 ## Note on Excel Files
-I try to avoid going back and forth. Excel is useful for data entry (especially when you're collecting your data in the field). But once you're done with data collection, I would avoid going between R and Excel. 
+I try to avoid going back and forth between excel and R. Excel is useful for data entry (especially when you're collecting your data in the field). But once you're done with data collection, I would avoid going between R and Excel. 
 
 My advice would be to export your excel sheet to a csv. CSVs are more memory efficient and easier to read into R. However, if you edit the Excel file remember you'll need to re-export your csv. 
 
@@ -99,7 +99,7 @@ myData <- read_excel("raw_data/an_excel_file.xls",
 
 
 ## Code for reading in a CSV so you have it
-There are a million ways to read in CSVs. Let's write out the code so you have it all. 
+There are a million ways to read in CSVs. In this pdf is the code so you have it. 
 
 ```{r eval=FALSE}
 # -------------------------------------------------------------------------
@@ -153,7 +153,7 @@ myData <- vroom("/raw_data/an_imaginary_csv.csv")
 
 ```
 
-# Today's example
+# Ex. Data Clean, Data Visualization, Results Export
 
 ## Data Download and Clean
 
@@ -163,7 +163,7 @@ First step: download csv and drag it into `raw_data` folder.
 - Click the download button 
 
 
-*Pull it into the `raw_data` file we created while going through file structure. Create a script called `0_data_clean.R` in the `scripts` folder*
+*First, pull data into the `raw_data` file we created while going through file structure. Next, create a script called `0_data_clean.R` in the `scripts` folder*
 
 ```{r message=F, warning=FALSE}
 # Andie Creel / Goal: data cleaning / Started: January 11 2023
@@ -173,7 +173,7 @@ First step: download csv and drag it into `raw_data` folder.
 # -------------------------------------------------------------------------
 library(readr) # reading in csv
 library(dplyr) # data cleaning 
-# library(ggplot2) # if we're fighting with get data loaded
+# library(ggplot2) # if we're fighting to get data loaded
 
 # -------------------------------------------------------------------------
 # read in: reading in data is slow, so i always call it _og in case 
@@ -204,17 +204,20 @@ myData <- myData_og %>%
   select(-fl)
   
 
-# write clean data 
+# write clean data so it's saved as a seperate file we can load
 write_csv(myData, "data/clean_data/my_clean_data.csv")
 ```
 
+- writing clean data can save memory and be fast for when you're doing analysis
 
-## Data Vis
+## Data Visualization
 
 - Normally, you'd do some more exploratory analysis in another file
 - You'd also do more data cleaning than this 
 - But we're going to move onto data visualization for times sake
-- We'll do 6 chats together to get a feel for it 
+- We'll do 6 charts together 
+    - Good data visualization requires choosing the right chart
+    - Get a feel for it 
 - Then we'll polish one 
     - see the types of things we can change
     - get some best practices for nice figures
@@ -238,97 +241,118 @@ library(ggplot2)
 myData <- read_csv("data/clean_data/my_clean_data.csv")
 
 # -------------------------------------------------------------------------
-# Scatter plot -- two continuous variables: geom_point()
-#   hwy: highway miles per gallon 
-#   displ: engine displacement which is approx. engine size
+# Histogram -- the distribution of a single numerical variable: geom_histogram()
 # -------------------------------------------------------------------------
 
-#AC: run these one line at a time 
-ggplot(myData, aes(x = displ, y = hwy)) +
-  geom_point() +
-  labs(title = "Engine Displacement vs Highway MPG",
-       x = "Engine Displacement (litres)",
-       y = "Highway Miles per Gallon")
+# dataframe is an input to the plot function
+ggplot(myData, aes(x = hwy)) +
+  # geom_histogram() +
+  geom_histogram(binwidth = 2, fill = "black") + # inputs change look
+  labs(title = "Distribution of Highway Miles per Gallon",
+       x = "Highway Miles per Gallon",
+       y = "Count")
 
 # -------------------------------------------------------------------------
 # Box plot -- continuous variable for different categories: geom_boxplot()
 #   cyl: number of cylinders 
 # -------------------------------------------------------------------------
-myData %>% # pipe data 
-  mutate(cyl = as.factor(cyl)) %>% # change a variable to be categorical (factor())
-  ggplot(aes(x = cyl, y = hwy)) +
+myData %>% # Pipe data 
+  mutate(cyl = as.factor(cyl)) %>% # data manipulation (show this commented)
+  ggplot(aes(x = cyl, y = hwy)) +  # make the plot
     geom_boxplot() +
     labs(title = "Highway MPG Distribution by Cylinder Count",
          x = "Number of Cylinders",
          y = "Highway Miles per Gallon")
 
 # -------------------------------------------------------------------------
-# Histogram -- the distribution of a single numerical variable: geom_histogram()
-# -------------------------------------------------------------------------
-myData %>% # example of us piping in the data (could have this in the gglot() function)
-  ggplot(aes(x = hwy)) +
-    # the geom_...() functions can have different inputs to change their looks
-    geom_histogram(binwidth = 1, 
-                   fill = "blue",
-                   color = "black") +
-    labs(title = "Distribution of Highway Miles per Gallon",
-         x = "Highway Miles per Gallon",
-         y = "Count")
-
-# -------------------------------------------------------------------------
 # Bar chart -- count of observations in different categories: geom_bar()
 # -------------------------------------------------------------------------
 ggplot(myData, aes(x = manufacturer)) +
-  geom_bar(color = "red", fill = "blue") +
+  geom_bar(fill = "black") +
   labs(title = "Number of Observations by Manufacturer",
        x = "Manufacturer",
-       y = "Count") +
-  theme(axis.text.x = element_text(angle = 45, hjust = 1))
+       y = "Count")
 
 # -------------------------------------------------------------------------
-# Multiple plots -- when you wanna see the same graph for multiple classes 
+# Scatter plot -- two continuous variables: geom_point()
+#   hwy: highway miles per gallon 
+#   displ: engine displacement which is approx. engine size
 # -------------------------------------------------------------------------
+
+#AC: run these one line at a time 
+#   - aes: aesthetics 
+#   - tells you the axis you'll be plotting
+#       - x axis: engine size 
+#       - y axis: hwy mpg
+ggplot(myData, aes(x = displ, y = hwy)) +
+  geom_point() +
+  labs(title = "Engine Displacement vs Highway MPG",
+       x = "Engine Displacement (litres)",
+       y = "Highway Miles per Gallon") 
+
+# Third color axis: groups that you want shown in different colors.
+ggplot(myData, aes(x = displ, y = hwy, color = manufacturer)) +
+  geom_point() +
+  labs(title = "Engine Displacement vs Highway MPG by Company",
+       x = "Engine Displacement (litres)",
+       y = "Highway Miles per Gallon", 
+       color = "Company") 
+
+# -------------------------------------------------------------------------
+# Multiple plots -- same graph for different categories: facet_wrap()
+#     - same information last chart with the color
+# -------------------------------------------------------------------------
+
+# can store a graph as an object 
 myFacet <-  ggplot(myData, aes(x = displ, y = hwy)) +
   geom_point() + # type of graph you wanna see multiple times
   facet_wrap(~manufacturer) + # seperated by what?
-  labs(title = "Engine Displacement vs Highway MPG by Car Class",
+  labs(title = "Engine Displacement vs Highway MPG by the car Manufacturer",
        x = "Engine Displacement (litres)",
        y = "Highway Miles per Gallon")
+
+# display the graph
 myFacet 
 
-# ggsave("results/facet.png", # file path and name
-#        plot = myFacet, # plot you want to save
-#        width = 10, # width of plot (inches)
-#        height = 8, # height of plot (inches)
-#        dpi = 300) # dots per square inch)
-
 # -------------------------------------------------------------------------
-# Line chart -- when you wanna see how something changed through time: geom_line()
+# Line chart -- How a numeric variable changed through time: geom_line()
 # -------------------------------------------------------------------------
 
-# we're going to use the economics data set, which is in the ggplot2 package
+# Use the economics data set (ggplot2 package)
 myLine <- economics %>% 
   ggplot(aes(x = date, y = unemploy)) + 
   geom_line() + 
     labs(title = "Unemployment through time",
        x = "Year",
        y = "Unemployed (in thousands)")
+
+# Print chart
 myLine
 
+# -------------------------------------------------------------------------
+# Save a chart
+# -------------------------------------------------------------------------
+
+# Line graph
 ggsave("results/line_chart.png", # file path and name
        plot = myLine, # plot you want to save
        width = 10, # width of plot (inches)
        height = 8, # height of plot (inches)
        dpi = 300) # dots per square inch
 
-#AC: copy and past this to go save another plot from up above
+# Facet
+ggsave("results/facet.png", 
+       plot = myFacet, 
+       width = 10, 
+       height = 4, # specialize the height for the figure
+       dpi = 300) 
 
 ```
 
 
-*open up one of the plots in our results folder*
+*Open up one of the plots in our results folder.*
 
-- We couldn't put this in a presentation, it's not easy enough to read
+These are okay, but not presentation ready. 
 
 # A few of the best practices for data visualization
 
@@ -340,12 +364,12 @@ ggsave("results/line_chart.png", # file path and name
 - If good, they'll  know your key results from a glance
 - Figures make or break whether people know what you found
 
-Let's take one of our charts and make it polished following a few basic best practices. Data visualization is an art all on it's own, and it's worth taking advantage of other resources in data visualization. 
+Let's take one of our charts and make it polished following a few basic best practices. Data visualization is an art all on it's own, and it's worth taking advantage of other resources in data visualization. However, these best practices will get you pretty far. 
 
 **Best Practices**
 
 1) Choose the right graph: let your research question guide this
-2) Clear labels and titles 
+2) Write clear labels and titles 
 3) Simple as possible while not becoming reductive
 4) All parts of graph are legible 
 5) Colors are not horrible and also work for people who are color blind 
@@ -356,36 +380,31 @@ These six rules will get your pretty far.
 *Let's work with a plot we already made in the `2_results.R` file.*
 
 ## Facet chart
-Consider if our research questions gas milage relative to engine size, compared across our companies. 
+Consider if our research questions gas mileage relative to engine size, compared across companies. 
 
 
 ```{r}
 # -------------------------------------------------------------------------
-# Working with the facet plot already 
+# Worlk with out facet plot
 # -------------------------------------------------------------------------
 
 myFacet <- ggplot(myData, aes(x = displ, y = hwy)) +
   geom_point(size = 2.5) + # make points legible
   facet_wrap(~manufacturer) + 
-  
-  # clean up our title
-  labs(title = "Engine Size vs Highway MPG by Company", 
+  labs(title = "Engine Size vs Highway MPG by Company", # clean up our title
        x = "Engine Displacement (litres)",
        y = "Highway Miles per Gallon") +
-  
-  # choose the right simple theme that are prepackaged in ggplot
   # theme_minimal() +
-  theme_bw() + 
-  
-  # make sure it's legible
-  theme(text = element_text(size=20))
+  theme_bw() +                                          # choose simple theme
+  theme(text = element_text(size=20))                   # make it legible
 
+# print chart
 myFacet
   
 ggsave("results/facet.png",
        plot = myFacet,
        width = 10, 
-       height = 4, # change this so isn't so weirdly shaped
+       height = 4,
        dpi = 300) 
 
 
@@ -396,52 +415,48 @@ ggsave("results/facet.png",
 
 My main advise is to keep your colors as simple as possible. 
 
-Consider our bar chart
+Consider our bar chart.
 
 ```{r}
 # -------------------------------------------------------------------------
 # Working with our old bar chart
 # -------------------------------------------------------------------------
 
-# colors I use: darkred, darkblue, darkgreen, darkorange, 
-
+# colors I use: darkred, darkblue, darkgreen, darkorange a lot. 
 
 myBar <-  ggplot(myData, aes(x = manufacturer)) +
-  
-  # change the color of each bar
-  geom_bar( fill = c("darkblue", "darkorange", "darkred")) +
+  geom_bar( fill = c("darkblue", "darkorange", "darkred")) + # change colors
   labs(title = "Number of Observations by Manufacturer",
        x = "Manufacturer",
        y = "Count") +
   theme(axis.text.x = element_text(angle = 45, hjust = 1)) +
-  
-  # make it simple
   # theme_bw() +
-  theme_minimal() +
-  
-  # make it legible
-  theme(text = element_text(size=20))
+  theme_minimal() +                                         # make it simple
+  theme(text = element_text(size=20))                       # make it legible
 
+# print chart
 myBar
-
 
 # show the difference between png and jpeg
 ggsave("results/bar.jpeg",
        plot = myBar,
        width = 10, 
-       height = 8, # change this so isn't so weirdly shaped
+       height = 8, 
        dpi = 300) 
 
 ggsave("results/bar.png",
        plot = myBar,
        width = 10, 
-       height = 8, # change this so isn't so weirdly shaped
+       height = 8, 
        dpi = 300)
 
 ```
 
 
+## Wrap up 
+There are million ways to tweak charts, and you'll probably spend loads of time tweaking your figures in R. However, once you get over the learning curve, making them in R will be so much faster than if you're editing them in Power Point or Excel. 
 
+When it's all code, you can regenerate your figures extremely quick. This is so valuable when you get more data, or in the worst case where you realize you made a mistake data cleaning and need to fix that then regenerate all your data. 
 
 
 

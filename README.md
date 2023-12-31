@@ -32,7 +32,7 @@ The teaching fellow is Eliana Stone
 	- why code
 	- pseudo-code
 	- debugging
-- Lecture two: [Base R](lecture_material/2_base_r/r_tutorial.pdf)
+- Lecture two: [Base R](lecture_material/2_base_R.pdf)
 	- write and run scripts
 	- basic data types
 	- ways to make collections of data
@@ -42,7 +42,7 @@ The teaching fellow is Eliana Stone
 	- If Else statements 
 	
 ### Day Two 
-- Lecture three: [Data Manipulation with Tidyverse](lecture_material/3_data_manipulation/data_manip_tidyverse.pdf) 
+- Lecture three: [Data Manipulation with Tidyverse](lecture_material/3_data_manip_tidyverse.pdf) 
 
     - `if_else()`
     - `mutate()`
@@ -54,5 +54,13 @@ The teaching fellow is Eliana Stone
     - `pivot_longer()`
     - `pivot_wider()`
     
-- Lecture four: [Data Management and Visualization](lecture_material/4_data_manage_vis/manage_vis.pdf)
+- Lecture four: [Data Management and Visualization](lecture_material/4_data_manage_vis/4_data_manage_vis.pdf)
+
+    - [find data here](https://github.com/a5creel/intro_to_programming/blob/main/lecture_material/4_data_manage_vis/raw_data/mpg.csv)
+    - Creating and R Project
+    - File Structure 
+    - Importing Data 
+    - Data Visualization 
+    - Results Export
+    - Best Practices for Data Vis
 	
