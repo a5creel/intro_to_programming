@@ -19,8 +19,8 @@ The goal of this lecture is:
 1) Learn how to set up an R Project 
 2) Learn best practices for file structures
 3) Importing data 
-4) Basic data visualization with ggplot 
-5) Exporting results 
+4) Exporting results
+5) Basic data visualization with ggplot 
 
 # Creating an R Project
 
@@ -157,13 +157,13 @@ myData <- vroom("/raw_data/an_imaginary_csv.csv")
 
 ## Data Download and Clean
 
-First step: download csv and drag it into raw_data folder. 
+First step: download csv and drag it into `raw_data` folder. 
 
 - Here is the link: [https://github.com/a5creel/intro_to_programming/blob/main/lecture_material/4_data_manage_vis/raw_data/mpg.csv](https://github.com/a5creel/intro_to_programming/blob/main/lecture_material/4_data_manage_vis/raw_data/mpg.csv)
 - Click the download button 
-- *Pull it into the `raw_data` file we created while going through file structure*
 
-*Create a script called `0_data_clean.R` in the `scripts` folder*
+
+*Pull it into the `raw_data` file we created while going through file structure. Create a script called `0_data_clean.R` in the `scripts` folder*
 
 ```{r message=F, warning=FALSE}
 # Andie Creel / Goal: data cleaning / Started: January 11 2023
@@ -181,6 +181,9 @@ library(dplyr) # data cleaning
 # -------------------------------------------------------------------------
 myData_og <- read_csv("data/raw_data/mpg.csv")
 
+# Look aat the dataset so we know what variables we have etc
+# View(myData_og)
+
 # alternatives in case this isn't working 
 # myData_og <- read_csv("https://raw.githubusercontent.com/a5creel/intro_to_programming/main/lecture_material/4_data_manage_vis/raw_data/mpg.csv")
 
@@ -190,6 +193,7 @@ myData_og <- read_csv("data/raw_data/mpg.csv")
 
 # -------------------------------------------------------------------------
 # clean data: what we learned this morning
+#   - the variables you do or don't need should be informed by your research Q
 # -------------------------------------------------------------------------
 
 # our research Q is:
@@ -210,8 +214,10 @@ write_csv(myData, "data/clean_data/my_clean_data.csv")
 - Normally, you'd do some more exploratory analysis in another file
 - You'd also do more data cleaning than this 
 - But we're going to move onto data visualization for times sake
-- We'll do 4 chats together to get a feel for it 
-- Then we'll polish one to see the times of things we can change. 
+- We'll do 6 chats together to get a feel for it 
+- Then we'll polish one 
+    - see the types of things we can change
+    - get some best practices for nice figures
 
 *Create a `2_figures.R` script in the `scripts` folder*
 
@@ -232,7 +238,7 @@ library(ggplot2)
 myData <- read_csv("data/clean_data/my_clean_data.csv")
 
 # -------------------------------------------------------------------------
-# Scatter plot: geom_point()
+# Scatter plot -- two continuous variables: geom_point()
 #   hwy: highway miles per gallon 
 #   displ: engine displacement which is approx. engine size
 # -------------------------------------------------------------------------
@@ -244,28 +250,195 @@ ggplot(myData, aes(x = displ, y = hwy)) +
        x = "Engine Displacement (litres)",
        y = "Highway Miles per Gallon")
 
+# -------------------------------------------------------------------------
+# Box plot -- continuous variable for different categories: geom_boxplot()
+#   cyl: number of cylinders 
+# -------------------------------------------------------------------------
+myData %>% # pipe data 
+  mutate(cyl = as.factor(cyl)) %>% # change a variable to be categorical (factor())
+  ggplot(aes(x = cyl, y = hwy)) +
+    geom_boxplot() +
+    labs(title = "Highway MPG Distribution by Cylinder Count",
+         x = "Number of Cylinders",
+         y = "Highway Miles per Gallon")
 
+# -------------------------------------------------------------------------
+# Histogram -- the distribution of a single numerical variable: geom_histogram()
+# -------------------------------------------------------------------------
+myData %>% # example of us piping in the data (could have this in the gglot() function)
+  ggplot(aes(x = hwy)) +
+    # the geom_...() functions can have different inputs to change their looks
+    geom_histogram(binwidth = 1, 
+                   fill = "blue",
+                   color = "black") +
+    labs(title = "Distribution of Highway Miles per Gallon",
+         x = "Highway Miles per Gallon",
+         y = "Count")
 
+# -------------------------------------------------------------------------
+# Bar chart -- count of observations in different categories: geom_bar()
+# -------------------------------------------------------------------------
+ggplot(myData, aes(x = manufacturer)) +
+  geom_bar(color = "red", fill = "blue") +
+  labs(title = "Number of Observations by Manufacturer",
+       x = "Manufacturer",
+       y = "Count") +
+  theme(axis.text.x = element_text(angle = 45, hjust = 1))
 
-
-
-# USE THE CHAT GPT THING TO GET THE REST TOGETHER. 
-
-
-
-
-
-ggplot(mpg, aes(x = factor(cyl), y = hwy)) +
-  geom_boxplot() +
-  labs(title = "Highway MPG Distribution by Cylinder Count",
-       x = "Number of Cylinders",
+# -------------------------------------------------------------------------
+# Multiple plots -- when you wanna see the same graph for multiple classes 
+# -------------------------------------------------------------------------
+myFacet <-  ggplot(myData, aes(x = displ, y = hwy)) +
+  geom_point() + # type of graph you wanna see multiple times
+  facet_wrap(~manufacturer) + # seperated by what?
+  labs(title = "Engine Displacement vs Highway MPG by Car Class",
+       x = "Engine Displacement (litres)",
        y = "Highway Miles per Gallon")
+myFacet 
+
+# ggsave("results/facet.png", # file path and name
+#        plot = myFacet, # plot you want to save
+#        width = 10, # width of plot (inches)
+#        height = 8, # height of plot (inches)
+#        dpi = 300) # dots per square inch)
+
+# -------------------------------------------------------------------------
+# Line chart -- when you wanna see how something changed through time: geom_line()
+# -------------------------------------------------------------------------
+
+# we're going to use the economics data set, which is in the ggplot2 package
+myLine <- economics %>% 
+  ggplot(aes(x = date, y = unemploy)) + 
+  geom_line() + 
+    labs(title = "Unemployment through time",
+       x = "Year",
+       y = "Unemployed (in thousands)")
+myLine
+
+ggsave("results/line_chart.png", # file path and name
+       plot = myLine, # plot you want to save
+       width = 10, # width of plot (inches)
+       height = 8, # height of plot (inches)
+       dpi = 300) # dots per square inch
+
+#AC: copy and past this to go save another plot from up above
 
 ```
 
 
+*open up one of the plots in our results folder*
+
+- We couldn't put this in a presentation, it's not easy enough to read
+
+# A few of the best practices for data visualization
+
+**Why is data visualization so important?**
+
+- You put hundreds of hours into data collection and analysis
+- Most people are just going to look at your figures
+- If bad, they won't read your paper 
+- If good, they'll  know your key results from a glance
+- Figures make or break whether people know what you found
+
+Let's take one of our charts and make it polished following a few basic best practices. Data visualization is an art all on it's own, and it's worth taking advantage of other resources in data visualization. 
+
+**Best Practices**
+
+1) Choose the right graph: let your research question guide this
+2) Clear labels and titles 
+3) Simple as possible while not becoming reductive
+4) All parts of graph are legible 
+5) Colors are not horrible and also work for people who are color blind 
+6) Use ggplot/code for as much as possible (saves so much time in long run if you get new data, change your mind about something, etc)
+
+These six rules will get your pretty far. 
+
+*Let's work with a plot we already made in the `2_results.R` file.*
+
+## Facet chart
+Consider if our research questions gas milage relative to engine size, compared across our companies. 
 
 
+```{r}
+# -------------------------------------------------------------------------
+# Working with the facet plot already 
+# -------------------------------------------------------------------------
+
+myFacet <- ggplot(myData, aes(x = displ, y = hwy)) +
+  geom_point(size = 2.5) + # make points legible
+  facet_wrap(~manufacturer) + 
+  
+  # clean up our title
+  labs(title = "Engine Size vs Highway MPG by Company", 
+       x = "Engine Displacement (litres)",
+       y = "Highway Miles per Gallon") +
+  
+  # choose the right simple theme that are prepackaged in ggplot
+  # theme_minimal() +
+  theme_bw() + 
+  
+  # make sure it's legible
+  theme(text = element_text(size=20))
+
+myFacet
+  
+ggsave("results/facet.png",
+       plot = myFacet,
+       width = 10, 
+       height = 4, # change this so isn't so weirdly shaped
+       dpi = 300) 
+
+
+```
+
+
+## Bar chart (colors)
+
+My main advise is to keep your colors as simple as possible. 
+
+Consider our bar chart
+
+```{r}
+# -------------------------------------------------------------------------
+# Working with our old bar chart
+# -------------------------------------------------------------------------
+
+# colors I use: darkred, darkblue, darkgreen, darkorange, 
+
+
+myBar <-  ggplot(myData, aes(x = manufacturer)) +
+  
+  # change the color of each bar
+  geom_bar( fill = c("darkblue", "darkorange", "darkred")) +
+  labs(title = "Number of Observations by Manufacturer",
+       x = "Manufacturer",
+       y = "Count") +
+  theme(axis.text.x = element_text(angle = 45, hjust = 1)) +
+  
+  # make it simple
+  # theme_bw() +
+  theme_minimal() +
+  
+  # make it legible
+  theme(text = element_text(size=20))
+
+myBar
+
+
+# show the difference between png and jpeg
+ggsave("results/bar.jpeg",
+       plot = myBar,
+       width = 10, 
+       height = 8, # change this so isn't so weirdly shaped
+       dpi = 300) 
+
+ggsave("results/bar.png",
+       plot = myBar,
+       width = 10, 
+       height = 8, # change this so isn't so weirdly shaped
+       dpi = 300)
+
+```
 
 
 
