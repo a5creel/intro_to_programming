@@ -67,4 +67,4 @@ The teaching fellow is Eliana Stone
 
 # Problem Sets 
 
-Navigate to the problem sets to find pdf and r markdown version of the mini problem sets. They are designed to take around one hour, and no more than two hours. 
+Navigate to the problem set folder to find the pdf and r markdown versions of the mini problem sets. They are designed to take around one hour and no more than two hours. 
