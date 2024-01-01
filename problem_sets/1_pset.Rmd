@@ -11,7 +11,7 @@ Try to solve each problem using day one's material and some minimal Googling. If
 
 Remember to consider writing pseudo code prior to trying to code your answer to the problem! 
 
-This problem set should take 1-2 hours. If you feel like you're struggling through getting things to click, don't get discouraged. Stuggling through a problem is the best way to learn it! (If it starts to get discouraging, come to office hours!)
+This problem set should take 1-2 hours. If you feel like you're struggling through getting things to click, don't get discouraged. Struggling through a problem is the best way to learn it! (If it starts to get discouraging, come to office hours!)
 
 
 ```{r setup, include=FALSE}
