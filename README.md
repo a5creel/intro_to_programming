@@ -63,4 +63,8 @@ The teaching fellow is Eliana Stone
     - Data Visualization 
     - Results Export
     - Best Practices for Data Vis
-	
+
+
+# Problem Sets 
+
+Navigate to the problem sets to find pdf and r markdown version of the mini problem sets. They are designed to take around one hour, and no more than two hours. 
