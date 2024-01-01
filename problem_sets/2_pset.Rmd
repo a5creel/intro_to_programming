@@ -2,7 +2,7 @@
 title: "Day 2 Mini Problem Set for All Things Data"
 author: "Your Name"
 date: "Date"
-output: pdf_document
+output: html_document
 ---
 # Introduction
 

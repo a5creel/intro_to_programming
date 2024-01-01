@@ -10,7 +10,7 @@ urlcolor: blue
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE) # lets us see code in the pdf
-rm(list=ls()) # clears the enviroment 
+rm(list=ls()) # clears the environment 
 ```
 
 How I'd recommend following along for this lecture: have the pdf in front of you so you can follow along some of the points, but mostly write the code and comments in a script or R markdown. 

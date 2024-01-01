@@ -2,7 +2,7 @@
 title: "Day 1 Mini Problem Set for R Tutorial"
 author: "Your Name"
 date: "Date"
-output: pdf_document
+output: html_document
 ---
 
 # Introduction
