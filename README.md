@@ -56,7 +56,7 @@ The teaching fellow is Eliana Stone
     
 - Lecture four: [Data Management and Visualization](lecture_material/4_data_manage_vis/4_data_manage_vis.pdf)
 
-    - [find data here](https://github.com/a5creel/intro_to_programming/blob/main/lecture_material/4_data_manage_vis/raw_data/mpg.csv)
+    - [find data here](https://github.com/a5creel/intro_to_programming/blob/main/lecture_material/4_data_manage_vis/data/raw_data/mpg.csv)
     - Creating and R Project
     - File Structure 
     - Importing Data 
