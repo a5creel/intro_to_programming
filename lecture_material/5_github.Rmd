@@ -23,11 +23,14 @@ knitr::opts_chunk$set(echo = TRUE)
 **Your code is stored in the "cloud" so if you break you're computer it's okay.** I'm on my third laptop of grad school so this point is really important for me. 
 
 
-**Some language**
-- Repository: repositories are *kind of* to GitHub as R Projects are to your local computer 
-- push: you push changes from your computer to the cloud
-- pull: you pull changes from the cloud to your computer 
+## Some Language
+
+- Repository (repo): repositories are *kind of* to GitHub as R Projects are to your local computer 
+- push: you push changes from your computer (*your R Project*) to the cloud (*your GitHub repo*)
+- pull: you pull changes (*your GitHub repo*) from the cloud to your computer (*your R Project*)
 - commit: a message you write about the changes
+- clone: GitHub word for copy 
+- stage: select the files you have changed on your local computer and want to push to github
 
 # Create a GitHub Account
 
@@ -43,8 +46,8 @@ knitr::opts_chunk$set(echo = TRUE)
 
 # Set Up Git
 
-- Configure your Git installation with your name and email. This information will be attached to your commits and tags.
-- Open your terminal (Command Prompt or Git Bash on Windows) and enter the following commands:
+- Configure your Git installation with your name and email. This information will be attached to your commits.
+- Open your **terminal** (Command Prompt or Git Bash on Windows) and enter the following commands. *Remember that terminal is different from console.*:
 
 ```{bash, eval=FALSE}
 git config --global user.name "Your Name"
@@ -57,12 +60,13 @@ git config --global user.email "your_email@example.com"
 - Open RStudio.
 - Go to Tools (far right on tool bar) > Global Options > Git/SVN.
 - Ensure that the path to the Git executable is correctly set.
+- Figures crossed this just goes as planned! Hopefully nothing to actually do here. 
 
 # Create a New Repository on GitHub
 
 - Log in to your GitHub account.
 - Click on the "+" icon in the top right corner and select "New repository."
-- Give your repository a name, an optional description, choose public or private, and  initialize it with a README.
+- Give your repository a name, a description, choose public or private, and  initialize it with a README.
 
 
 # Clone the Repository in RStudio
@@ -76,6 +80,7 @@ This step is almost identical to what we did yesterday, we're just adding the st
 # Make Changes and Commit
 
 - Within the RStudio project, you can now create or edit files.
+- You can create a file, or you *should* have a README.md file that you can edit. 
 - To commit changes, go to the Git tab in RStudio (usually in the upper-right pane).
 - Stage the changes you want to commit (*click the files*), add a commit message (*that log we saw earlier? This is the message*), and then click Commit.
 
@@ -94,7 +99,8 @@ On this step we're going to need to enter our "password." GitHub doesn't let us 
 - Generate New Token: Click on "Generate new token," give your token a descriptive name, and set the expiration according to your preference. *However ever often you feel like doing this.*
 - Select Scopes: Choose the scopes or permissions your token should have. For typical Git operations, select repo, which includes access to private repositories.
 - Generate Token: Click "Generate token" at the bottom. **Make sure to copy the token and keep it somewhere safe, as you won’t be able to see it again.**
-
+- Push your changes again 
+- Enter the PAT when prompted 
 
 # Pull Changes from GitHub
 Sometimes a collaborator will have changed things and you'll need to pull the changes from the cloud to your local computer. To show and example of this: 
@@ -102,12 +108,31 @@ Sometimes a collaborator will have changed things and you'll need to pull the ch
 - Go to GitHub
 - Go to your repository's homepage, which is the README file 
 - Click the edit button (little pencil)
-- Make some changes. 
+- Make some changes
 - Commit those changes
 - Go back to R Studio 
-- To update your local repository with changes from GitHub, click the Pull button in the Git tab.
+- Pull the changes to your local machine (*blue arrow, pull to local machine*)
+
 
 # Fork a repository 
+
+Forking creates a copy of someone's GitHub repository that you can edit and work with. You can fork any public GitHub repository. Let's fork this workshops repository. 
+
+- Navigate to this courses webpage (repo): [https://github.com/a5creel/intro_to_programming](https://github.com/a5creel/intro_to_programming)
+- Fork the repo: button is usually located in the top-right corner of the repository page, near the "Star" and "Watch" buttons. GitHub will create a copy of the repository in your account.
+- Go to your GitHub profile. Look at your repositories. You should have one called "intro_to_programming". When you click on the link, is should be https://github.com/YOUR_USER_NAME/intro_to_programming. 
+- Clone to your computer so you can make changes to it. (follow same steps as before.)
+    - make new r project (somewhere you can find!)
+    - paste in your URL link 
+    - Should populate your project with all my files 
+
+
+
+
+
+
+
+
 
 
 

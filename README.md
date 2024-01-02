@@ -63,6 +63,16 @@ The teaching fellow is Eliana Stone
     - Data Visualization 
     - Results Export
     - Best Practices for Data Vis
+    
+- Lecture Five: [Version Control with GitHub](lecture_material/5_github.pdf)
+
+    - Why use GitHub
+    - Create a GitHub account
+    - Install, Set Up and Integrate Git with R Studio
+    - "Clone" a GitHub "Repository" to your local machine
+    - Make change, write commit messages and "push" back to GitHub
+    - "Pull" changes from GitHub to local computer
+    - "Fork" someone's GitHub Repository so you can make changes to their files locally 
 
 
 # Problem Sets 
