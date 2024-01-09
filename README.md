@@ -74,7 +74,8 @@ The teaching fellow is Eliana Stone
     - "Pull" changes from GitHub to local computer
     - "Fork" someone's GitHub Repository so you can make changes to their files locally 
     
-- Lecture six [Coding is Coding](lecture_material/6_python.pdg): same material as Lecture 2, but in Python
+- Lecture six [Coding is Coding](lecture_material/6_python.pdg)
+    - Same material as Lecture 2, but in Python
 
 
 # Problem Sets 

@@ -104,7 +104,7 @@ library(ggplot2)
     - `filter()`
     - `select()`
     - `group_by()`
-    - `summarize()`
+    - `summarise()`
     - `left_join()`
 - There are a million ways to implement these functions 
 - Important for your solution strategy to know that these are the functions you can build around 
@@ -299,7 +299,7 @@ myEmps_grouped
   
 ```
 
-## `summarize()`
+## `summarise()`
 
 When used with group by, can give you fast and simple summaries of the data table. 
 
@@ -307,19 +307,20 @@ Ex. you're interested in some stats about the department
 
 ```{r}
 # -------------------------------------------------------------------------
-# summarize
+# summarise
 # -------------------------------------------------------------------------
 myEmp_summary <- myEmps %>% 
   group_by(department) %>% 
-  summarize(avg_sal = mean(salary), # avg salary by department
+  summarise(avg_sal = mean(salary), # avg salary by department
             num_employees = n()) # number of employess
 
 myEmp_summary
 ```
 
 
-**Quick note on the `n()` function:** it looks like is didn't get an input, but remember we used all the pipes. The `n()` function is designed to be used with the `summarize()` function and return how many observations are in a group. 
+**Quick note on the `n()` function:** it looks like is didn't get an input, but remember we used all the pipes. The `n()` function is designed to be used with the `summarise()` function and return how many observations are in a group. 
 
+Disclaimer: There is also a `summarize()` function that should work the same, but sometimes may not. Eliana highlighted this, and the recommendation is to use the `summarise()`! 
 
 ## join() functions
 

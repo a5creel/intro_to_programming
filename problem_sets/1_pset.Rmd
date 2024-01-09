@@ -20,7 +20,8 @@ knitr::opts_chunk$set(echo = TRUE)
 
 # Problem 1: Basic Operations
 
-Create two numeric variables with any values and perform basic arithmetic operations (addition, subtraction, multiplication, division) on them.
+Create two numeric variables with any values and perform basic arithmetic operations (addition, subtraction, multiplication, division) on them. 
+
 Assign the result of a division to a new variable and print it.
 
 ```{r}
@@ -30,9 +31,9 @@ Assign the result of a division to a new variable and print it.
 
 
 # Problem 2: Working with Vectors
-Create a numeric vector with at least 5 elements.
-Compute the sum (`sum()`) and mean (`mean()`) of the vector.
-Use a logical comparison (true/false) within a for-loop to identify which elements of the vector are greater than the mean. You may need to use the `print()` command.
+Create a numeric vector with at least 5 elements. Compute the sum (`sum()`) and mean (`mean()`) of the vector. 
+
+Use a logical comparison (true/false) within a for-loop to print if an element of the vector is greater than the mean. You may need to use the `print()` command.
 
 ```{r}
 # Insert code here
@@ -52,8 +53,10 @@ Print only the second column of the data frame.
 
 # Problem 4: Loop and Function
 Write a function that takes a numeric input and returns the square of the number.
+
 Use a for loop to apply this function to each element of a numeric vector that you create.
-Store the results in a new vector, `newVec <- rep(NA, 5)`, and print it using the `print()` command.
+
+Store the results in a new vector that you first initialize by running `newVec <- rep(NA, 5)`. Print the new vector using the `print()` command.
 
 ```{r}
 # Insert code here
@@ -61,7 +64,8 @@ Store the results in a new vector, `newVec <- rep(NA, 5)`, and print it using th
 ```
 
 # Problem 5: Conditional Logic
-Using the data frame created in Problem 3, write an if statement inside a loop to perform a conditional operation (e.g., if a number in a numeric column is even, replace it with half its value).
+Using the data frame created in Problem 3, write an if statement inside a loop to perform the following conditional operation on the numeric variable you created: if a number in a numeric column is even, replace it with half its value.
+
 Print the modified data frame.
 
 Practicing Googling to figure out how to code if a number is even or not.
@@ -73,6 +77,6 @@ Practicing Googling to figure out how to code if a number is even or not.
 
 
 # Problem 6: Reflect
-Write a brief reflection (2-3 sentences) on what you found challenging and what you learned from this problem set.
+Write a brief reflection (1-3 sentences) on what you found challenging and what you learned from this problem set.
 
 <!-- Write your reflection here -->

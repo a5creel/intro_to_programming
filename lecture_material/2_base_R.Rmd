@@ -80,7 +80,7 @@ a + b
 **Mini psets**
 
 - If you have no experience with R, start with a script. 
-- If you want to do a R Markdown and am used to them, that's fine. 
+- If you want to do a R Markdown and are used to them, that's fine. 
 
 You can "clean up" the Environment after you've executed code by clicking the broom icon. **This will delete everything in your environment**.
 
@@ -90,7 +90,8 @@ You can "clean up" the Environment after you've executed code by clicking the br
 # This is a comment, you can use '#' to write notes to yourself in your code 
 # - Comments are what make or break good coders, and coders who can collaborate with others. 
 # - If you ever thing you writing "too" many comments, you almost always not.
-# - The things you think are obvious in your code wont be to others (nor yourself in a year when you get back to a project)
+# - The things you think are obvious in your code wont be to others 
+# - (nor yourself in a year when you get back to a project)
 
 # Numeric -- integer: no decimal points
 myInt <- 1
@@ -113,9 +114,9 @@ myChar_b <- 'b'
 ```{r}
 # vector: can only be a vector of one data type (numeric, logical, string)
 myVec_n <- c(1, 2, 3, 4, 5)
-myVec_s <- c(str, "b", "c")
+myVec_s <- c(myChar_a, "b", "c")
 
-# matrix: can only be a matrix of one data type
+# matrix: should only be a matrix of one data type
 myMat_n <- matrix(c(myVec_n, 
                 6, 7, 8, 9, 10), 
               nrow = 2, 
@@ -126,19 +127,25 @@ myList <- list(2, "c", myMat_n)
 myList[[1]] # returns numeric 
 myList[[2]] # returns string
 myList [[3]] # returns matrix
+```
 
-# data frame: can have multiple data types  
+## Dataframes
+
+- Like matrices
+- Can have different data types in each column
+- Reference specific columns using the “$” operator, followed by the name of the column
+- For the most part, you’ll be loading new data by reading a csv 
+- You might have to create one at some point.
+- By looking at how they’re created we can get a better sense of what goes into them
+
+```{r}
+# data frame: can have multiple data types 
 myDF <- as.data.frame(myMat_n)
 colnames(myDF) # these don't mean anything to me 
 colnames(myDF) <- c("age_yr", "weight_lb", "income_$", "height_ft", "height_in")
 
 ```
 
-Dataframes:
-
-- Like matrices
-- Can have different data types in each column 
-- Reference specific columns using the “$” operator, followed by the name of the column
 
 ```{r}
 # investigate one column 
@@ -149,9 +156,7 @@ myDF$nonsense <- myDF$age_yr + myDF$weight_lb
 
 ```
 
-- For the most part, you’ll be loading new data by reading a csv 
-- You might have to create one at some point.
-- By looking at how they’re created we can get a better sense of what goes into them
+
 
 ```{r}
 # Create the data frame
