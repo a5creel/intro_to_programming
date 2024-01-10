@@ -40,6 +40,8 @@ The teaching fellow is Eliana Stone
 	- Functions
 	- Loops
 	- If Else statements 
+- [Script](class_scripts/day_1_script.R) written during class 
+
 	
 ### Day Two 
 - Lecture three: [Data Manipulation with Tidyverse](lecture_material/3_data_manip_tidyverse.pdf) 
