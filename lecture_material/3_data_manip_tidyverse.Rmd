@@ -132,7 +132,7 @@ myBase <- 	data.frame(
 myDplyr <- myBase
 
 # -------------------------------------------------------------------------
-# manipulating a column (from above: version one of referencing a cell)
+# manipulating a column 
 # -------------------------------------------------------------------------
 
 # Base R
@@ -222,7 +222,7 @@ Ex 1: You just want people in the marketing department
 myEmps <- data.frame(
   id = 1:5,
   name = c("Alice", "Bob", "Charlie", "David", "Eva"),
-  department = c("IT", "Marketing", "HR", "Marketing", "IT"),
+  department = c("IT", "Market", "HR", "Market", "IT"),
   salary = c(45000, 55000, 40000, 60000, 50000)
 )
 
@@ -231,10 +231,10 @@ myEmps
 # -------------------------------------------------------------------------
 # filter
 # -------------------------------------------------------------------------
-myEmp_marketing <- myEmps %>% 
-  filter(department == "Marketing")
+myEmp_m <- myEmps %>% 
+  filter(department == "Market")
 
-myEmp_marketing
+myEmp_m
 
 
 ```
@@ -335,7 +335,7 @@ A `left_join()` adds variables from a second dataset to your original dataset. T
 # create second dataset
 # -------------------------------------------------------------------------
 myDepts <- data.frame(
-  department = c("IT", "Marketing", "HR"),
+  department = c("IT", "Market", "HR"),
   location = c("Building A", "Building B", "Building C"),
   boss = c("John Doe", "Jane Smith", "Mike Brown")
 )

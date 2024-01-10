@@ -247,7 +247,13 @@ myF(.7)
 
 ```{r}
 
-#simple 
+# Complicated code that is simplified by the loop
+print(1)
+print(2)
+print(3)
+print(4)
+
+# The following loop does the exact same thing
 for (i in 1:4){
   print(i)
 }
@@ -272,6 +278,12 @@ for (i in 1:length(myPpl$age)) {
 }
 
 # Making a new column 
+# Version one: Line by line 
+myPpl$age_new[1] <- myPpl$age[1] + 1 
+myPpl$age_new[2] <- myPpl$age[2] + 1 
+myPpl$age_new[3] <- myPpl$age[3] + 1 
+
+# Version two: loop 
 for (i in 1:length(myPpl$age)) {
   myPpl$age_new[i] <- myPpl$age[i] + 1 # everyone aged one year
 }

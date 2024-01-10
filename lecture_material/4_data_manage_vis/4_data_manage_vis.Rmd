@@ -153,7 +153,7 @@ myData <- vroom("/raw_data/an_imaginary_csv.csv")
 
 ```
 
-# Ex. Data Clean, Data Visualization, Results Export
+# Today's Example
 
 ## Data Download and Clean
 
@@ -163,7 +163,7 @@ First step: download csv and drag it into `raw_data` folder.
 - Click the download button 
 
 
-*First, pull data into the `raw_data` file we created while going through file structure. Next, create a script called `0_data_clean.R` in the `scripts` folder*
+*First, pull data into the `raw_data` file we created while going through file structure. Next, create a script called `1_data_clean.R` in the `scripts` folder*
 
 ```{r message=F, warning=FALSE}
 # Andie Creel / Goal: data cleaning / Started: January 11 2023
@@ -181,7 +181,7 @@ library(dplyr) # data cleaning
 # -------------------------------------------------------------------------
 myData_og <- read_csv("data/raw_data/mpg.csv")
 
-# Look aat the dataset so we know what variables we have etc
+# Look at the dataset so we know what variables we have etc
 # View(myData_og)
 
 # alternatives in case this isn't working 
@@ -201,7 +201,9 @@ myData_og <- read_csv("data/raw_data/mpg.csv")
 #   - not about the type of fuel "fl"
 myData <- myData_og %>%
   filter(manufacturer == "ford" | manufacturer == "dodge" | manufacturer == "toyota") %>% 
-  select(-fl)
+  select(-fl) %>% 
+  mutate(cyl = as.factor(cyl)) # data manipulation: factor datatypes are discrete categories 
+
   
 
 # write clean data so it's saved as a seperate file we can load
@@ -243,6 +245,10 @@ myData <- read_csv("data/clean_data/my_clean_data.csv")
 # -------------------------------------------------------------------------
 # Histogram -- the distribution of a single numerical variable: geom_histogram()
 # -------------------------------------------------------------------------
+#AC: run these one line at a time 
+#   - aes: aesthetics 
+#   - tells you the axis you'll be plotting
+#       - x axis: hwy mpg
 
 # dataframe is an input to the plot function
 ggplot(myData, aes(x = hwy)) +
@@ -257,7 +263,7 @@ ggplot(myData, aes(x = hwy)) +
 #   cyl: number of cylinders 
 # -------------------------------------------------------------------------
 myData %>% # Pipe data 
-  mutate(cyl = as.factor(cyl)) %>% # data manipulation (show this commented)
+  mutate(cyl = as.factor(cyl)) %>%  # didn't read in as a factor
   ggplot(aes(x = cyl, y = hwy)) +  # make the plot
     geom_boxplot() +
     labs(title = "Highway MPG Distribution by Cylinder Count",
@@ -279,11 +285,7 @@ ggplot(myData, aes(x = manufacturer)) +
 #   displ: engine displacement which is approx. engine size
 # -------------------------------------------------------------------------
 
-#AC: run these one line at a time 
-#   - aes: aesthetics 
-#   - tells you the axis you'll be plotting
-#       - x axis: engine size 
-#       - y axis: hwy mpg
+
 ggplot(myData, aes(x = displ, y = hwy)) +
   geom_point() +
   labs(title = "Engine Displacement vs Highway MPG",
@@ -319,6 +321,8 @@ myFacet
 # -------------------------------------------------------------------------
 
 # Use the economics data set (ggplot2 package)
+data(economics)
+
 myLine <- economics %>% 
   ggplot(aes(x = date, y = unemploy)) + 
   geom_line() + 
@@ -385,7 +389,7 @@ Consider if our research questions gas mileage relative to engine size, compared
 
 ```{r}
 # -------------------------------------------------------------------------
-# Worlk with out facet plot
+# Work with out facet plot
 # -------------------------------------------------------------------------
 
 myFacet <- ggplot(myData, aes(x = displ, y = hwy)) +
