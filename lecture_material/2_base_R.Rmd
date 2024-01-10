@@ -304,7 +304,6 @@ for (i in 1:length(myPpl$male)) {
 
 # Other R Tutorials
 
-[Princeton Getting Started with R](https://dss.princeton.edu/training/)
 
 [UCLA Getting Started with R](https://stats.oarc.ucla.edu/stat/data/intro_r/intro_r_interactive_flat.html)
 
