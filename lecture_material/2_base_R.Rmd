@@ -308,6 +308,8 @@ for (i in 1:length(myPpl$male)) {
 
 [UCLA Getting Started with R](https://stats.oarc.ucla.edu/stat/data/intro_r/intro_r_interactive_flat.html)
 
+[git lab intro](https://rgup.gitlab.io/research_cycle/01_intro.html#class_notes)
+
 # Some specific packages
 We haven't covered packages yet, but a few good resources for the tomorrow.
 

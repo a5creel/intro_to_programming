@@ -40,7 +40,8 @@ The teaching fellow is Eliana Stone
 	- Functions
 	- Loops
 	- If Else statements 
-- [Script](class_scripts/day_1_script.R) written during class 
+- [Script](class_scripts/day_1_script.R) written during class
+- [Recording of day one](https://yale.zoom.us/rec/share/olT18aaruMId54FpS1a9Vgc7jUzuSbtgBmpECo5MzBy1rbnZgyRvj6BIHB9gP2GT.MpUDoMa-Mla6eGHW?startTime=1704896217000)
 
 	
 ### Day Two 
