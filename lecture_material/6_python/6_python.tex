@@ -378,8 +378,10 @@
     % Slightly bigger margins than the latex defaults
     
     \geometry{verbose,tmargin=1in,bmargin=1in,lmargin=1in,rmargin=1in}
-    
-    
+   
+\title{Day 3, Lecture One: Python}
+\author{Andie Creel} 
+\date{}
 
 \begin{document}
     
@@ -402,7 +404,7 @@ out.
 
 In R Studio, create a python script. This will require the
 \texttt{retriculate} package and you may also need to install the
-\texttt{IRkernel} package, as well. Instal both.
+\texttt{IRkernel} package, as well. Install both.
 
 We're now going to go through what we did on day one.
 
@@ -763,7 +765,7 @@ names and row index.
 \PY{c+c1}{\PYZsh{} Initialize new column }
 \PY{n}{myPpl}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{age\PYZus{}new\PYZus{}m}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]} \PY{o}{=} \PY{n}{myPpl}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{age}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}
 
-\PY{c+c1}{\PYZsh{} Iterating through the DataFrame}
+\PY{c+c1}{\PYZsh{} Iterating through the DataFrame useing the row (i) and column (male) to reference the location }
 \PY{k}{for} \PY{n}{i} \PY{o+ow}{in} \PY{n+nb}{range}\PY{p}{(}\PY{n+nb}{len}\PY{p}{(}\PY{n}{myPpl}\PY{p}{)}\PY{p}{)}\PY{p}{:}
     \PY{k}{if} \PY{n}{myPpl}\PY{o}{.}\PY{n}{loc}\PY{p}{[}\PY{n}{i}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{male}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}\PY{p}{:}
         \PY{n}{myPpl}\PY{o}{.}\PY{n}{loc}\PY{p}{[}\PY{n}{i}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{age\PYZus{}new\PYZus{}m}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]} \PY{o}{=} \PY{n}{myPpl}\PY{o}{.}\PY{n}{loc}\PY{p}{[}\PY{n}{i}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{age}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]} \PY{o}{\PYZhy{}} \PY{l+m+mi}{3}

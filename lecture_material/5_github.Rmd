@@ -1,5 +1,5 @@
 ---
-title: "Day 3, Lecture One: Version Control with GitHub"
+title: "Day 3, Lecture Two: Version Control with GitHub"
 author: "Andie Creel"
 date: "January, 2023"
 output: 
@@ -35,19 +35,21 @@ knitr::opts_chunk$set(echo = TRUE)
 # Create a GitHub Account
 
 - Go to [https://github.com/](https://github.com/)
-- Sing up for an account with email and password
+- Sign up for an account with email and password
 - Do NOT use your Yale email, use an email you'll have access to ~forever.
 
 # Install Git to your computer 
 
 - Git is the operating system that GitHub is built on
-- Download here: [https://git-scm.com/](https://git-scm.com/)
+- Download here: 
+    - mac: [https://git-scm.com/](https://git-scm.com/)
+    - windows: [https://git-scm.com/download/win](https://git-scm.com/download/win)
 - Follow installation instructions 
 
 # Set Up Git
 
 - Configure your Git installation with your name and email. This information will be attached to your commits.
-- Open your **terminal** (Command Prompt or Git Bash on Windows) and enter the following commands. *Remember that terminal is different from console.*:
+- Open your **terminal** (Command Prompt on Windows) and enter the following commands. *Remember that terminal is different from console.*:
 
 ```{bash, eval=FALSE}
 git config --global user.name "Your Name"
@@ -60,7 +62,7 @@ git config --global user.email "your_email@example.com"
 - Open RStudio.
 - Go to Tools (far right on tool bar) > Global Options > Git/SVN.
 - Ensure that the path to the Git executable is correctly set.
-- Figures crossed this just goes as planned! Hopefully nothing to actually do here. 
+<!-- - Figures crossed this just goes as planned! Hopefully nothing to actually do here.  -->
 
 # Create a New Repository on GitHub
 

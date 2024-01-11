@@ -67,7 +67,11 @@ The teaching fellow is Eliana Stone
     - Results Export
     - Best Practices for Data Vis
     
-- Lecture Five: [Version Control with GitHub](lecture_material/5_github.pdf)
+- Lecture Five: [Coding is Coding](lecture_material/6_python.pdg)
+    - Same material as Lecture 2, but in Python
+    
+    
+- Lecture Six: [Version Control with GitHub](lecture_material/5_github.pdf)
 
     - Why use GitHub
     - Create a GitHub account
@@ -77,8 +81,7 @@ The teaching fellow is Eliana Stone
     - "Pull" changes from GitHub to local computer
     - "Fork" someone's GitHub Repository so you can make changes to their files locally 
     
-- Lecture six [Coding is Coding](lecture_material/6_python.pdg)
-    - Same material as Lecture 2, but in Python
+
 
 
 # Problem Sets 
