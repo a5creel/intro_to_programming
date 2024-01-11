@@ -67,7 +67,7 @@ The teaching fellow is Eliana Stone
     - Results Export
     - Best Practices for Data Vis
     
-- Lecture Five: [Coding is Coding](lecture_material/6_python.pdg)
+- Lecture Five: [Coding is Coding](lecture_material/6_python.pdf)
     - Same material as Lecture 2, but in Python
     
     
