@@ -87,3 +87,15 @@ The teaching fellow is Eliana Stone
 # Problem Sets 
 
 Navigate to the problem set folder to find the pdf and r markdown versions of the mini problem sets. They are designed to take around one hour and no more than two hours. 
+
+# Notes to Self for next time 
+
+- Have an optional first session for downloading R and R Studio
+- Talk about booleans as indicator variables, show how to make an indicator variable. Say out boolean = logical = indicator
+- Show loop as one line of code at a time, then the loop. Like edit one row at a time, then show how a loop does that  
+- Go slower (plan for lectures to be longer, like 930 - 1) 
+  	- Cut first lecture down so that base R lecture has more time on first day
+- Do something different with python lecture
+  	- office hours require for everyone to come to day before so that we can get it on everyone's computer
+  	- google collab
+- Add something about R markdowns at some point? 
