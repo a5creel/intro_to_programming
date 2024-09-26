@@ -49,7 +49,7 @@ Layout of RStudio:
 2+3
 
 
-# variable assignment happens with an arrow (on a mac can do option + -)
+# variable assignment happens with an arrow (on a mac can do option -) 
 a <- 2
 b <- 3
 
@@ -75,9 +75,8 @@ a + b
 - I love these because I'm able to write lots of notes to myself while I'm coding
   - it produces a nice shareable file 
   - can share my notes, code and results with others. 
-- You can do the minipsets with a script or r markdown.
 
-**Mini psets**
+**Problem Sets**
 
 - If you have no experience with R, start with a script. 
 - If you want to do a R Markdown and are used to them, that's fine. 
@@ -89,8 +88,8 @@ You can "clean up" the Environment after you've executed code by clicking the br
 ```{r}
 # This is a comment, you can use '#' to write notes to yourself in your code 
 # - Comments are what make or break good coders, and coders who can collaborate with others. 
-# - If you ever thing you writing "too" many comments, you almost always not.
-# - The things you think are obvious in your code wont be to others 
+# - If you ever thing you writing "too" many comments, you almost always are not.
+# - The things you think are obvious in your code won't be to others 
 # - (nor yourself in a year when you get back to a project)
 
 # Numeric -- integer: no decimal points
@@ -99,7 +98,7 @@ myInt <- 1
 # Numeric -- double: decimal points
 myNum <- 2.4
 
-# logical (Boolean): a true/false statement. Use () to evaluate if something is true or false
+# logical (Boolean/Indicator variable): a true/false statement. Use () to evaluate if something is true or false
 myBool_1 <- (3 < 4)
 myBool_2 <- (3 > 4)
 
@@ -115,6 +114,9 @@ myChar_b <- 'b'
 # vector: can only be a vector of one data type (numeric, logical, string)
 myVec_n <- c(1, 2, 3, 4, 5)
 myVec_s <- c(myChar_a, "b", "c")
+myVec_string <- c(1, "b", "c")
+myVec_string # notice the 1 has been make char bc of the "
+
 
 # matrix: should only be a matrix of one data type
 myMat_n <- matrix(c(myVec_n, 
@@ -129,7 +131,7 @@ myList[[2]] # returns string
 myList [[3]] # returns matrix
 ```
 
-## Dataframes
+## Data Frames
 
 - Like matrices
 - Can have different data types in each column
@@ -173,7 +175,7 @@ myPpl$male # version 1
 myPpl[,2] #version 2
 
 # Try referencing one row 
-myPpl[1,]
+myPpl[1]
 
 # Try referencing one cell
 myPpl$height[1] # version 1
@@ -191,7 +193,7 @@ myPpl[1,3] # version 2
 
 # assigning new value to same variable (something to do carefully)
 a <- 5
-a <- a + 1 # If you run this line more than one, you will NOT get six
+a <- a + 1 # If you run this line more than once, you will NOT get six
 a
 
 # assigning new value to new variable
@@ -214,7 +216,7 @@ Points:
 
 - These are helpful when you have something that you do often 
 - Rule of thumb: if you're copying and pasting code 3 times or more, make function 
-- (i say if you are going to copy past ever, because even if you think it'll only be twice it'll probably be more)
+- (I say if you are going to copy past ever, because even if you think it'll only be twice it'll probably be more)
 - Recent example for me:
   - wrote a function to take a date and return the season
   - Wrote a function to get kelvin and return Fahrenheit 
@@ -241,7 +243,7 @@ myF(.7)
   - For (i in 1 through 4) { print i }
   - For (i in 1 through 4) { print i / 4}
 - Can be helpful when 
-  - Iterate through a column of data and do something to each row 
+  - Iterating through a column of data and do something to each row 
   - Construct a new column and want to construct each row by scratch
 
 
@@ -271,21 +273,17 @@ for (i in 1:4){
   print(y)
 }
 
-
-# manipulating a column (from above: version one of referencing a cell)
-for (i in 1:length(myPpl$age)) {
-  myPpl$age[i] <- myPpl$age[i] + 1 # everyone aged one year
-}
+# Example 
 
 # Making a new column 
 # Version one: Line by line 
-myPpl$age_new[1] <- myPpl$age[1] + 1 
-myPpl$age_new[2] <- myPpl$age[2] + 1 
-myPpl$age_new[3] <- myPpl$age[3] + 1 
+myPpl$age_new_a[1] <- myPpl$age[1] + 1 
+myPpl$age_new_a[2] <- myPpl$age[2] + 1 
+myPpl$age_new_a[3] <- myPpl$age[3] + 1 
 
 # Version two: loop 
 for (i in 1:length(myPpl$age)) {
-  myPpl$age_new[i] <- myPpl$age[i] + 1 # everyone aged one year
+  myPpl$age_new_b[i] <- myPpl$age[i] + 1 # everyone aged one year
 }
 ```
 
@@ -295,7 +293,7 @@ for (i in 1:length(myPpl$age)) {
 - sometimes you want to execute a task ONLY if a certain condition is met. 
 - Open the myPpl df:
   - Our RA did not record men's ages right 
-  - All men are actually 3 years younger than what's recorded
+  - All men are actually 3 years older than what's recorded
   - What would the correct DF look like?
 - If statements let you fix a mistake like this
 - Also demonstrates why the Boolean (true/false or indicator) variable is so powerful
@@ -322,7 +320,7 @@ for (i in 1:length(myPpl$male)) {
 [git lab intro](https://rgup.gitlab.io/research_cycle/01_intro.html#class_notes)
 
 # Some specific packages
-We haven't covered packages yet, but a few good resources for the tomorrow.
+We haven't covered packages yet, but a few good resources for the future
 
 [ggplot](http://zevross.com/blog/2014/08/04/beautiful-plotting-in-r-a-ggplot2-cheatsheet-3/)
 
