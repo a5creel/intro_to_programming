@@ -1,7 +1,7 @@
 ---
 title: "Day 1, Lecture 2: Base R"
 author: "Andie Creel"
-date: "January, 2023"
+date: "January, 2024"
 output: 
   pdf_document:
     number_sections: true
@@ -12,8 +12,6 @@ urlcolor: blue
 knitr::opts_chunk$set(echo = TRUE)
 rm(list=ls())
 ```
-Special thanks to Sam Maher who wrote an R Tutorial in 2018 that influenced this.  
-
 
 # Goal
 This is R Studio. The goal of this lecture is to see some basics about R so that we can dive into more exciting things tomorrow. 
@@ -62,17 +60,18 @@ a + b
 
 **Writing Scripts and Running Code**
 
-- New Script: File > New File > R Script (or R Markdown, which is what I'm using now), or just the New Document script in the upper left hand corner of the screen > R Script (or R Markdown)
+- New Script: File > New File > R Script (or R Markdown, which is what I used to make the lecture notes), or just the New Document script in the upper left hand corner of the screen > R Script (or R Markdown)
 -	Keyboard shortcut to run a section of code: highlight or put your cursor on that line and hit Ctrl + Enter (Windows) or Command + Enter (Mac)
 - Executing code: the run button at the top right corner of the script 
 - For R Markdowns, we also have the Knit button at the top of the script.
-  - That will run all code and "knit" it together into a pdf or HTML or doc
+  - That will run all code and "knit" it together into a HTML or pdf or doc
   - File type is specified at the top of the R Markdown file
-
+  - You can also run code in a R Markdown by highlighting it and hitting Ctrl + Enter (Windows) or Command + Enter (Mac)
+  
 **R Markdown**
 
 - I wrote this pdf using an R Markdown (**show them quickly**). 
-- I love these because I'm able to write lots of notes to myself while I'm coding
+- I like because I'm able to write lots of notes to myself while I'm coding
   - it produces a nice shareable file 
   - can share my notes, code and results with others. 
 
@@ -83,30 +82,49 @@ a + b
 
 You can "clean up" the Environment after you've executed code by clicking the broom icon. **This will delete everything in your environment**.
 
-# Basic Data Types and COMMENTS
-
+# Comments 
 ```{r}
-# This is a comment, you can use '#' to write notes to yourself in your code 
-# - Comments are what make or break good coders, and coders who can collaborate with others. 
-# - If you ever thing you writing "too" many comments, you almost always are not.
-# - The things you think are obvious in your code won't be to others 
+# This is a comment, you can use '#' to write notes to yourself in your code
+# - Comments are what make or break good coders
+# - Good comments also create coders who can collaborate with others.
+# - If you ever think you're writing "too" many comments, you are not
+# - The things you think are obvious in your code won't be to others
 # - (nor yourself in a year when you get back to a project)
 
+# Comments are written in the same spot as code
+# But they are ignored by the computer
+# Let's run some code
+print("Hello, World!")
+```
+
+
+# Basic Data Types
+
+```{r}
 # Numeric -- integer: no decimal points
 myInt <- 1
 
 # Numeric -- double: decimal points
 myNum <- 2.4
 
-# logical (Boolean/Indicator variable): a true/false statement. Use () to evaluate if something is true or false
-myBool_1 <- (3 < 4)
-myBool_2 <- (3 > 4)
-
 # character (string) 
 myChar_a <- "a"
 myChar_b <- 'b'
 
+# You can have a variable that stores a character value,
+# but the character value is a number
+trick_q <- "1"
+trick_q
+
 ```
+Notice that the '1' has quotation marks around it, as the 'a' and 'b' did. This indicates to us that is is a character data type. When you look at the output of myInt, it also returns 1 but without the tick marks because myInt is a numeric variable and trick_q is a character (or string) variable.
+
+```{r}
+# logical (Boolean/Indicator variable): a true/false statement. Use () to evaluate if something is true or false
+myBool_1 <- (3 < 4)
+myBool_2 <- (3 > 4)
+```
+
 
 # Ways to store datatypes 
 
@@ -116,7 +134,13 @@ myVec_n <- c(1, 2, 3, 4, 5)
 myVec_s <- c(myChar_a, "b", "c")
 myVec_string <- c(1, "b", "c")
 myVec_string # notice the 1 has been make char bc of the "
+```
 
+**Vectors** are a useful way to store multiple observations. However, they only a single column of information. In EDS, we are interested in relating different variables to one another (i.e., How does temperature affect lion’s hunting success rate?) Two relate multiple variables together, we need make collections of data. The most basic way to do this is a **matrix.**
+
+```{r}
+# we already have a vector of numeric data 
+myVec_n
 
 # matrix: should only be a matrix of one data type
 myMat_n <- matrix(c(myVec_n, 
@@ -124,12 +148,18 @@ myMat_n <- matrix(c(myVec_n,
               nrow = 2, 
               ncol = 5)
 
-# Lists: Very powerful, but somewhat confusing. For now, just know they exist
+```
+
+We can also collect objects in a “list”. Lists are very powerful, but more advanced. For now, just know that they also exist.
+
+```{r}
+# Lists 
 myList <- list(2, "c", myMat_n)
 myList[[1]] # returns numeric 
 myList[[2]] # returns string
 myList [[3]] # returns matrix
 ```
+
 
 ## Data Frames
 
@@ -140,46 +170,57 @@ myList [[3]] # returns matrix
 - You might have to create one at some point.
 - By looking at how they’re created we can get a better sense of what goes into them
 
+Let's convert our list to a data frame 
+
 ```{r}
 # data frame: can have multiple data types 
 myDF <- as.data.frame(myMat_n)
-colnames(myDF) # these don't mean anything to me 
-colnames(myDF) <- c("age_yr", "weight_lb", "income_$", "height_ft", "height_in")
+colnames(myDF) # print column names
 
 ```
 
+These column names dont mean anything to me. Let's assign some column names. Each column is a variabel that you may have collected data on. 
+
+```{r}
+colnames(myDF) <- c("num_hunts", "temp", "num_adults", "num_cubs", "distance_from_road")
+
+colnames(myDF)
+```
+We can now look at a single column using the ‘$’ operator.
 
 ```{r}
 # investigate one column 
-myDF$age_yr
+myDF$num_adults
 
 #create a new column 
-myDF$nonsense <- myDF$age_yr + myDF$weight_lb
-
+myDF$total_lions <- myDF$num_adults + myDF$num_cubs
+myDF
 ```
 
+Let's build a dataframe with multiple datatypes (our lion data frame is all numeric). 
 
 
 ```{r}
 # Create the data frame
-myPpl <- 	data.frame(
-   gender = c("Male", "non-binary","Female"), 
-   male = c(T, F, F),
-   height = c(152, 171.5, 165), 
-   weight = c(81, 93, 78),
-   age = c(42,38,26)
+myPpl <- data.frame(
+  name = c("Andie", "Bridger", "Scott"),
+  gender = c("Female", "non-binary", "Male"),
+  male = c(TRUE, FALSE, FALSE),
+  income_cat = c("middle", "poor", "rich"),
+  park_dist_mi = c(1, 0.5, 0.1)
 )
+myPpl
 
 # Try referencing one column
-myPpl$male # version 1
-myPpl[,2] #version 2
+myPpl$name # version 1: $ notation
+myPpl[, 1] # version 2: [row, column] notation
 
 # Try referencing one row 
-myPpl[1]
+myPpl[1,]
 
 # Try referencing one cell
-myPpl$height[1] # version 1
-myPpl[1,3] # version 2
+myPpl$name[2] # version 1: $ and bracket 
+myPpl[2, 1] # version 2: bracket only 
 
 
 ```
@@ -221,17 +262,23 @@ Points:
   - wrote a function to take a date and return the season
   - Wrote a function to get kelvin and return Fahrenheit 
 
+## Example: park visitation 
+Let’s say we want to write a function that models the relationship between the probability of someone visiting a national park and the temperature (F). You know that people don’t visit the park when it’s very cold, nor when it’s very hot. You model the relationship using the following quadratic equation
+$$ v = F/100 -(F/100)^2$$
+where $v$ is visits and $F$ is the temperature
 
 ```{r}
 
-myF <- function(x){
-  y <- x - x^2
-  return(y)
+get_visits <- function(Far){
+  v <- Far/100 - (Far/100)^2  
+  return(v)
 }
 
-myF(.5)
-myF(.25)
-myF(.7)
+get_visits(0)
+get_visits(25)
+get_visits(50)
+get_visits(75)
+get_visits(100)
 
 ```
 
