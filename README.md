@@ -2,24 +2,26 @@
 
 ### Overview 
 
-The workshop will run from January 10th to 12th before spring classes begin. The three-day workshop will provide the students with no prior experience the basic programming skills required to take full advantage of YSE course offerings. The workshop will heavily focus on the programming language R, but it will introduce students to version control with GitHub (something that should be used with any programming project) and introduce students to Python (to demonstrate that the fundamental concepts hold across any programming language). 
+The workshop will run from January 8th to 10th before spring classes begin. This three-day workshop will provide the students with no prior experience the basic programming skills required to take full advantage of YSE course offerings. The workshop will heavily focus on the programming language R, but it will introduce students to version control with GitHub (something that should be used with any programming project) and introduce students to Python (to demonstrate that the fundamental concepts hold across any programming language). 
 
-Each day will consist of two lectures in the morning (60-80 minutes with a 30-minute break between), a mini problem set to practice the skills being learned, and open office hours in the afternoon for students to ask clarifying questions. 
+Each day will consist of two lectures in the morning (60-90 minutes with a 30-minute break between), a mini problem set to practice the skills being learned, and open office hours in the afternoon for students to ask clarifying questions. 
 
 
 ### Logistics 
 
-- Class time: 9:30 to approximately noon 
+- Class time: 9:00 to 12:30, with a 30-minute break around 10:30 
 - Room: G01 in Kroon
 
 
 The workshop is prepared and taught by Andie Creel. 
+
 - andie.creel@yale.edu
 - Office hours: 2 - 5 pm
-- Office: 301 Prospect, Room 101
+- Office: Sage 8A
 
 
 The teaching fellow is Eliana Stone
+
 - eliana.stone@yale.edu
 
 # Material 
@@ -40,8 +42,9 @@ The teaching fellow is Eliana Stone
 	- Functions
 	- Loops
 	- If Else statements 
-- [Script](class_scripts/day_1_script.R) written during class
-- [Recording of day one](https://yale.zoom.us/rec/share/olT18aaruMId54FpS1a9Vgc7jUzuSbtgBmpECo5MzBy1rbnZgyRvj6BIHB9gP2GT.MpUDoMa-Mla6eGHW?startTime=1704896217000)
+<!--- [Script](class_scripts/day_1_script.R) written during class
+-->
+<!--- [Recording of day one](https://yale.zoom.us/rec/share/olT18aaruMId54FpS1a9Vgc7jUzuSbtgBmpECo5MzBy1rbnZgyRvj6BIHB9gP2GT.MpUDoMa-Mla6eGHW?startTime=1704896217000)-->
 
 	
 ### Day Two 
@@ -66,7 +69,8 @@ The teaching fellow is Eliana Stone
     - Data Visualization 
     - Results Export
     - Best Practices for Data Vis
-    
+
+### Day Three 
 - Lecture Five: [Coding is Coding](lecture_material/6_python/6_python.pdf)
     - Same material as Lecture 2, but in Python
     
@@ -81,14 +85,11 @@ The teaching fellow is Eliana Stone
     - "Pull" changes from GitHub to local computer
     - "Fork" someone's GitHub Repository so you can make changes to their files locally 
     
-
-
-
 # Problem Sets 
 
 Navigate to the problem set folder to find the pdf and r markdown versions of the mini problem sets. They are designed to take around one hour and no more than two hours. 
 
-# Notes to Self for next time 
+<!--# Notes to Self for next time 
 
 - Have an optional first session for downloading R and R Studio
 - Talk about booleans as indicator variables, show how to make an indicator variable. Say out boolean = logical = indicator
@@ -98,4 +99,4 @@ Navigate to the problem set folder to find the pdf and r markdown versions of th
 - Do something different with python lecture
   	- office hours require for everyone to come to day before so that we can get it on everyone's computer
   	- google collab
-- Add something about R markdowns at some point? 
+- Add something about R markdowns at some point? -->

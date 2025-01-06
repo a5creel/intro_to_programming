@@ -281,7 +281,7 @@ get_visits(75)
 get_visits(100)
 
 ```
-
+So we can see that as the temperature increases from 0F to 50F, the probability of someone taking a trip increases up to 25%. However, after 50F, the probability of taking a trip begins to decrease.
 
 # Loops
 
@@ -290,12 +290,12 @@ get_visits(100)
   - For (i in 1 through 4) { print i }
   - For (i in 1 through 4) { print i / 4}
 - Can be helpful when 
-  - Iterating through a column of data and do something to each row 
+  - Iterating through a column of data and do something to each row
   - Construct a new column and want to construct each row by scratch
+  - Simulation models
 
 
 ```{r}
-
 # Complicated code that is simplified by the loop
 print(1)
 print(2)
@@ -312,50 +312,123 @@ for (i in 1:4){
   print(i/4)
 }
 
+```
+## Let's combine the loop with our get_visits function 
+
+```{r}
 # combining loop and function  
-for (i in 1:4){
+for (i in 0:4){
   
-  y = myF(i/4)
+  y = get_visits(i*25)
   
   print(y)
 }
 
-# Example 
+```
 
-# Making a new column 
-# Version one: Line by line 
-myPpl$age_new_a[1] <- myPpl$age[1] + 1 
-myPpl$age_new_a[2] <- myPpl$age[2] + 1 
-myPpl$age_new_a[3] <- myPpl$age[3] + 1 
+What if you want more temperatures than just 0, 25, 50, 75, 100? 
 
-# Version two: loop 
-for (i in 1:length(myPpl$age)) {
-  myPpl$age_new_b[i] <- myPpl$age[i] + 1 # everyone aged one year
+```{r}
+# Create a vector of the max_temps we want to get visits for
+max_temps <- seq(0, 100, by = 10) # could sequence by steps of 1 (n = 100)
+max_temps
+
+# combining loop and our function
+for (i in max_temps){
+y <- get_visits(i)
+print(y)
 }
 ```
+## Iterating over a dataframe
+Let’s recall our data from `myPpl`. We can use a for loop to iteratively change each cell in a column. Let’s say all three of our people, Andie, Bridger and Scott, move one mile away from their nearest park (bummer). We could do this one line at at time, like this:
+
+```{r}
+# the [i] here is indicating which row we are editing
+myPpl$new_park_dist_a[1] <- myPpl$park_dist[1] + 1 # edit for Andie
+myPpl$new_park_dist_a[2] <- myPpl$park_dist[2] + 1 # edit for Bridger
+myPpl$new_park_dist_a[3] <- myPpl$park_dist[3] + 1 # edit for Scott
+
+# print
+myPpl
+```
+
+This worked, but there is an easier way to do it with a loop. The loop will help minimize the chance of making an error and shorten the amount of code we need to write to achieve our goal.
+
+```{r}
+for(i in seq_along(myPpl$park_dist)){
+  # change all people's distance
+  myPpl$new_park_dist_b[i] <- myPpl$park_dist[i] + 1
+}
+
+myPpl
+```
+We can see that both versions (a versus b) worked the same. However, the for loop simplifies the code and makes it easier to read.
+
+# Loop for Simulation 
+Let's create a simulation model if we know the temperature is going to increase by 0.02 degrees C each year for the next 50 years. Let's make a data frame of these temperature increases (if we have time). 
+
+```{r}
+# Initialize parameters
+initial_temp <- 15 # Initial temperature in degrees Celsius
+n_year <- 51 # Number of n_year to simulate
+temp_increase_per_year <- 0.02 # Temperature increase per year in degrees Celsius
+
+# Create a numeric vector for the 50 years we will simulate
+years <- numeric(n_year)
+years[1] <- 2025 # initialize the first year
+
+# Create a numeric vector for the 50 years of temperatures we will simulate
+max_temps <- numeric(n_year)
+max_temps[1] <- initial_temp # initialize temp in first year
+
+# Simulate the temperature change over the n_year
+# notice this will start in year TWO
+for (yr in 2:n_year) {
+  years[yr] <- years[yr - 1] + 1 # fill in the years
+  max_temps[yr] <- max_temps[yr - 1] + temp_increase_per_year # fill in the max_temps
+}
+
+# Create a data frame to store the results
+simulation_results <- data.frame(
+  Year = years,
+  Temperature = max_temps
+)
+
+# Print the results
+head(simulation_results) # show the first few rows
+tail(simulation_results) # show the last few rows
+
+# Plot the results
+plot(simulation_results$Year, simulation_results$Temperature,
+     xlab = "Year", ylab = "Max Temperature (C)",
+     main = "Temperature Over Time")
+```
+
 
 
 # If statements
 
 - sometimes you want to execute a task ONLY if a certain condition is met. 
-- Open the myPpl df:
-  - Our RA did not record men's ages right 
-  - All men are actually 3 years older than what's recorded
-  - What would the correct DF look like?
-- If statements let you fix a mistake like this
-- Also demonstrates why the Boolean (true/false or indicator) variable is so powerful
+- Let’s return to our myPpl dataset one last time (for today):
+    - Our RA did not record women and non-binary’s original distances from parks correctly
+    - All women and non-binary people are actually 0.25 miles closer to parks than thought
+
+- What would the correct DF look like?
+    - If statements let you fix a mistake like this
+    - Also demonstrates why the Boolean (true/false or indicator) variable is so powerful
 
 ```{r}
-# goes through each row and changes age if someone is male
-for (i in 1:length(myPpl$male)) {
- 
-   if (myPpl$male[i] == TRUE) {
-    myPpl$age_new_m[i] <- myPpl$age[i] - 3
+
+# goes through each row and changes distance if someone is not male
+for (i in seq_along(myPpl$male)) {
+  if (myPpl$male[i] == FALSE) { # check if someone is "not male"
+    myPpl$park_dist_correct[i] <- myPpl$park_dist_mi[i] - 0.25 # adjust
   }else{
-    myPpl$age_new_m[i] <- myPpl$age[i]
+    myPpl$park_dist_correct[i] <- myPpl$park_dist_mi[i]
   }
 }
 
+myPpl
 ```
 
 
