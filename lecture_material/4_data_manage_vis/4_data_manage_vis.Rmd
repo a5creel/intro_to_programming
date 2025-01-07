@@ -1,7 +1,7 @@
 ---
 title: "Day 2, Lecture Two: Data Management and Visualization"
 author: "Andie Creel"
-date: "January, 2023"
+date: "January, 2025"
 output: 
   pdf_document:
     number_sections: true
@@ -54,7 +54,7 @@ They act as an address for your computer to recognize that everything in that pr
 
 Matt Wibbenmeyer (fellow at RFF) wrote a Notes on Project Management and Collaboration for RFF RAs and interns that I still use. It is worth reading and you can find it [here](https://github.com/a5creel/intro_to_programming/blob/993d477efd65d69e3813dad8434fa7a46b7b7bbc/lecture_material/4_data_manage_vis/Wibbenmeyer_notes_proj_collab.pdf). I share it with all my RAs and collaborators.
 
-There will be your `project/` folder. This is the file your R Project files lives. Everything else will be in this folder or sub folders. I typically have the following sub folders. 
+There will be your `project_name/` folder. This is the file your R Project files lives. Everything else will be in this folder or sub folders. I typically have the following sub folders. 
 
 - `data/`
     - `raw_data/`: The original data. Do not edit this! You never know when what you originally thought was a good idea was actually bad. Always keep a copy of your original data here. 
@@ -76,7 +76,7 @@ There will be your `project/` folder. This is the file your R Project files live
 You can import a lot of different data sets in a lot of different ways. The most common data sets I import are CSVs. 
 
 ## Note on Excel Files
-I try to avoid going back and forth between excel and R. Excel is useful for data entry (especially when you're collecting your data in the field). But once you're done with data collection, I would avoid going between R and Excel. 
+I try to avoid going back and forth between Excel and R. Excel is useful for data entry (especially when you're collecting your data in the field). But once you're done with data collection, I would avoid going between R and Excel. 
 
 My advice would be to export your excel sheet to a csv. CSVs are more memory efficient and easier to read into R. However, if you edit the Excel file remember you'll need to re-export your csv. 
 
@@ -166,7 +166,7 @@ First step: download csv and drag it into `raw_data` folder.
 *First, pull data into the `raw_data` file we created while going through file structure. Next, create a script called `1_data_clean.R` in the `scripts` folder*
 
 ```{r message=F, warning=FALSE}
-# Andie Creel / Goal: data cleaning / Started: January 11 2023
+# Andie Creel / Goal: data cleaning / Started: January 11 2025
 
 # -------------------------------------------------------------------------
 # load libraries 
@@ -417,7 +417,7 @@ ggsave("results/facet.png",
 
 ## Bar chart (colors)
 
-My main advise is to keep your colors as simple as possible. 
+My main advice is to keep your colors as simple as possible. 
 
 Consider our bar chart.
 
@@ -460,7 +460,7 @@ ggsave("results/bar.png",
 ## Wrap up 
 There are million ways to tweak charts, and you'll probably spend loads of time tweaking your figures in R. However, once you get over the learning curve, making them in R will be so much faster than if you're editing them in Power Point or Excel. 
 
-When it's all code, you can regenerate your figures extremely quick. This is so valuable when you get more data, or in the worst case where you realize you made a mistake data cleaning and need to fix that then regenerate all your data. 
+When it's all code, you can regenerate your figures extremely quick. This is so valuable when you get more data, or in the worst case where you realize you made a mistake data cleaning and need to fix that then regenerate all your results. 
 
 
 

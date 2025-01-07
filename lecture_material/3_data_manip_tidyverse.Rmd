@@ -1,7 +1,7 @@
 ---
 title: "Day 2, Lecture One: Data Manipulation with Tidyverse"
 author: "Andie Creel"
-date: "January, 2023"
+date: "January, 2025"
 output: 
   pdf_document:
     number_sections: true
@@ -36,7 +36,7 @@ Backing up and remembering we're scientists
 - The data we have may not be set up to be plugged into the model we'd like to run
 - However, it could be *manipulated* so that we can use the data we have with the model we want
 
-My personal example: American Time Use Survey and Travel Cost Model, Cell Photo Data and green space
+My personal example: American Time Use Survey and the value of outdoor leisure (travel cost model), Credit card data and the value of green space (hedonic model, I think)
 
 
 # What are packages and how can I get them?
@@ -71,7 +71,7 @@ My personal example: American Time Use Survey and Travel Cost Model, Cell Photo 
 ```
 
 
-**Installing a package vs. loading a pacakge** 
+**Installing a package vs. loading a package** 
 
 - You only need to install a package on your local computer once 
 - You then "load" that package in a script when you want to use it. 
@@ -110,39 +110,48 @@ library(ggplot2)
 - Important for your solution strategy to know that these are the functions you can build around 
 - I would say 90% of my data cleaning is different combinations of these functions
 - Why use dplyr instead of base R?
-    - It's faster and more memory efficient (good for large datasets)
+    - It's faster and more memory efficient (good for large data sets)
     - It's easier to read
 - Let's go through some examples of what we did yesterday, but redo with dplyr code
 
 
-## Examples from yesterday 
+# Redo examples from yesterday with `dplyr`
 
+## `mutate()`
 ```{r}
 # -------------------------------------------------------------------------
 # Let's make a dataframe again
 # -------------------------------------------------------------------------
-myBase <- 	data.frame(
-   gender = c("Male", "non-binary","Female"), 
-   male = c(T, F, F),
-   height = c(152, 171.5, 165), 
-   weight = c(81, 93, 78),
-   age = c(42,38,26)
+# Build our trusty dataset, but let's call this one myBase
+myBase <- data.frame(
+  name = c("Andie", "Bridger", "Scott"),
+  gender = c("Female", "non-binary", "Male"),
+  male = c(FALSE, FALSE, TRUE),
+  income_cat = c("middle", "poor", "rich"),
+  park_dist = c(1, 0.5, 0.1)
 )
 
+myBase
+
 myDplyr <- myBase
+
+# check to make sure they're the same
+identical(myBase, myDplyr)
 
 # -------------------------------------------------------------------------
 # manipulating a column 
 # -------------------------------------------------------------------------
 
 # Base R
-for (i in 1:length(myBase$age)) {
-  myBase$age[i] <- myBase$age[i] + 1 # everyone aged one year
+for (i in seq_along(myBase$park_dist)) {
+  myBase$park_dist[i] <- myBase$park_dist[i] + 1 # everyone move one mile 
 }
+myBase
 
 # dplyr
-myDplyr <- myDplyr %>% 
-  mutate(age = age + 1)
+# add mile to park dist using dplyr
+myDplyr <- myDplyr %>%
+  mutate(park_dist = park_dist + 1)
 
 # Check to make sure they're identical
 (myDplyr == myBase)
@@ -153,7 +162,7 @@ myDplyr <- myDplyr %>%
 
 - Pipes %>%: pipes take input (our dataframe) and passes it onto the next function. You can chain pipes together.
 - `mutate()` mutate is a function from the dplyr package 
-- A data frame is piped to the function `mutate()` and then the function executes some small function you gave it (age +1) and returns the new value
+- A data frame is piped to the function `mutate()` and then the function executes some small function you gave it (park_dist + 1) and returns the new value
 
 
 ```{r}
@@ -162,13 +171,15 @@ myDplyr <- myDplyr %>%
 # -------------------------------------------------------------------------
 
 # base R
-for (i in 1:length(myBase$age)) {
-  myBase$age_new[i] <- myBase$age[i] + 1 # everyone aged one year
+for (i in 1:length(myBase$park_dist)) {
+  myBase$park_dist_new[i] <- myBase$park_dist[i] + 1 # everyone moved one mile
 }
 
 # dplyr
 myDplyr <- myDplyr %>% 
-  mutate(age_new = age + 1)
+  mutate(park_dist_new = park_dist + 1)
+
+myDplyr
 
 # check if identical
 (myBase == myDplyr)
@@ -179,23 +190,29 @@ myDplyr <- myDplyr %>%
 
 - `mutate()` can also construct a new a new column
 
+## `if_else()`
+
+Last lecture, we said that women and non-binary people had their distances from parks recorded wrong. Non-male people were a quarter mile closer to the park than originally recorded.
+
 ```{r}
 # -------------------------------------------------------------------------
 # goes through each row and changes age if someone is male
 # -------------------------------------------------------------------------
 
 # base r
-for (i in 1:length(myBase$male)) {
-   if (myBase$male[i] == TRUE) {
-    myBase$age_new_m[i] <- myBase$age[i] - 3
+for (i in seq_along(myBase$male)) {
+  if (myBase$male[i] == FALSE) { # check if someone is "not male"
+    myBase$park_dist_correct[i] <- myBase$park_dist[i] - 0.25 # adjust
   }else{
-    myBase$age_new_m[i] <- myBase$age[i]
+    myBase$park_dist_correct[i] <- myBase$park_dist[i]
   }
 }
+myBase
 
-# dplyr 
-myDplyr <- myDplyr %>% 
-  mutate(age_new_m = if_else(male == TRUE, age - 3, age))
+# dplyr: if_else 
+myDplyr <- myDplyr %>%
+  mutate(park_dist_correct = if_else(male == FALSE, park_dist - 0.25, park_dist))
+myDplyr
   
 # Check if identical 
 (myBase == myDplyr)
@@ -205,41 +222,49 @@ myDplyr <- myDplyr %>%
 **New things introduced** 
 
 - `if_else()` combined with `mutate()`
-    - the first part is what you're evaluating to check if it's true (`male == TRUE`)
-    - Next entry is what to return if true (`age - 3`)
-    - Final part is what to return if false (`age`)
+    - the first part is what you're evaluating to check if it's true (`male == FALSE`)
+    - Next entry is what to return if true (`park_dist - 0.25`)
+    - Final part is what to return if false (`park_dist`)
 
 
-## New functions in the dplyr package: `filter()`
-You have a data set, and want subset to only some observations conditioned on something. 
+# New functions in the dplyr package
 
-Ex 1: You just want people in the marketing department 
+## `filter()`
+You have a data set, and want subset to only some observations conditioned on a characteristic.  
+
+Ex. 1: Let’s say we have observations of different ecosystems and want to filter to low pollution levels 
 
 ```{r}
 # -------------------------------------------------------------------------
-# make a data frame of employees
+# make an ecosystem dataset
 # -------------------------------------------------------------------------
-myEmps <- data.frame(
-  id = 1:5,
-  name = c("Alice", "Bob", "Charlie", "David", "Eva"),
-  department = c("IT", "Market", "HR", "Market", "IT"),
-  salary = c(45000, 55000, 40000, 60000, 50000)
+# ecosystem dataset
+df_env_data <- data.frame(
+  ecosystem = c("Forest", "Desert", "Wetland", "Grassland","Urban"),
+  species_richness = c(120, 45, 80, 60, 30),
+  pollution_level = c("Low", "High", "Medium", "Low", "High")
 )
 
-myEmps
+# display
+df_env_data
 
 # -------------------------------------------------------------------------
 # filter
 # -------------------------------------------------------------------------
-myEmp_m <- myEmps %>% 
-  filter(department == "Market")
 
-myEmp_m
+# filter to include only locations with low pollution levels
+low_pollution_data <- df_env_data %>%
+  filter(pollution_level == "Low")
+
+# display the filtered dataset
+low_pollution_data
 
 
 ```
 
-Ex 2: you have missing variables and need to drop those observations (a lot of models will require you to do this)
+Ex. 2: drop NAs
+
+You will frequently have datasets that have missing data (i.e., the cell has a NA value). Many functions and models won’t work with NAs, so they have to be cleaned out of the data set. Let’s imagine we’re missing a location for one of our ecosystem observations
 
 ```{r}
 # -------------------------------------------------------------------------
@@ -247,80 +272,95 @@ Ex 2: you have missing variables and need to drop those observations (a lot of m
 # -------------------------------------------------------------------------
 
 # example df
-myNAs <- data.frame(
-  id = 1:7,
-  name = c("Andie", "Bridger", "Nancy", "Scott", "Alex", "Tash", "Kenz"),
-  age = c(25, 30, NA, 28, 35, NA, "40")
+df_env_data_na <- data.frame(
+  ecosystem = c("Forest", "Desert", "Wetland", NA,"Urban"),
+  species_richness = c(120, 45, 80, 60, 30),
+  pollution_level = c("Low", "High", "Medium", "Low", "High")
 )
 
-# filter NAs
-myNAs_filter <- myNAs %>% 
-  filter(!is.na(age))
+df_env_data_na
 
-myNAs_filter # id 3 and 6 are dropped now
+
+# drop rows with NAs in the 'location' column using filter
+df_env_data_clean <- df_env_data_na %>%
+  filter(!is.na(ecosystem))
+
+df_env_data_clean 
 
 ```
 
 
-
-
 ## `select()`
 
-You have a data set with more columns than you need. Sometimes you want to only work with some of the variables, and it is space efficient to get rid of the rest. 
+You have a data set with more columns than you need. Sometimes you want to only work with some of the variables, and it is space eﬀicient to get rid of the rest.
 
-Ex: You want to "anonymize" the data by dropping people's name
+For example, let’s say you’re only interested in the polution at diffent locations, not the species richness.
 
 ```{r}
 # -------------------------------------------------------------------------
 # select
 # -------------------------------------------------------------------------
-myEmp_thin <- myEmps %>% 
-  select(id, department, salary)
+pollution_data <- df_env_data %>%
+  select(ecosystem, pollution_level)
 
-myEmp_thin
+pollution_data
 
 ```
 
 ## `group_by()`
 
-You need to group by a variable, and then run a function on those groups. For example, you want to know the total amount of salary for each department. 
+Group by is useful for when you want to aggregate information up to a higher level. So, if you need a variable that is the average species richness by ecosystem rather than the species richness at individual sites.
 
+Let’s work with a longer version of our ecosystem dataset
 
 ```{r}
 # -------------------------------------------------------------------------
-# group_by
+# create longer dataset
 # -------------------------------------------------------------------------
-myEmps_grouped <- myEmps %>%
-  group_by(department) %>%
-  mutate(dept_total_salary = sum(salary)) %>% 
-  ungroup(department)
 
-myEmps_grouped
+df_env_long <- data.frame(
+    ecosystem = c("Forest", "Desert", "Wetland", "Grassland", "Urban", "Forest", "Desert", "Wetland", "Grassland", "Urban"),
+    species_richness = c(120, 45, 80, 60, 30, 110, 50, 85, 65, 35),
+    pollution_level = c("Low", "High", "Medium", "Low", "High", "Low", "High", "Medium", "Low", "High")
+)
+
+# display the dataset
+df_env_long
+
+# group by ecosystem and calculate the mean species richness
+df_env_grouped <- df_env_long %>%
+    group_by(ecosystem) %>%
+    mutate(mean_species_richness = mean(species_richness))
+
+# display the updated dataset with mean species richness
+df_env_grouped
   
 ```
 
 ## `summarise()`
 
-When used with group by, can give you fast and simple summaries of the data table. 
-
-Ex. you're interested in some stats about the department 
+Finally, the summarise() function can help you create summary tables. These are useful for getting a quick snapshot of data. Using them is particularly important when you have a large enough datset that you’re unable to look at the dataset and glean insight (which, for me, happens if the dataset is longer than 5 observations).
 
 ```{r}
 # -------------------------------------------------------------------------
 # summarise
 # -------------------------------------------------------------------------
-myEmp_summary <- myEmps %>% 
-  group_by(department) %>% 
-  summarise(avg_sal = mean(salary), # avg salary by department
-            num_employees = n()) # number of employess
+# group by ecosystem and calculate the mean and total species richness
+summary_table <- df_env_long %>%
+    group_by(ecosystem) %>%
+    summarise(
+        mean_species_richness = mean(species_richness),
+        total_species_richness = sum(species_richness)
+    )
 
-myEmp_summary
+# display the summary table
+summary_table
 ```
 
 
 **Quick note on the `n()` function:** it looks like is didn't get an input, but remember we used all the pipes. The `n()` function is designed to be used with the `summarise()` function and return how many observations are in a group. 
 
-Disclaimer: There is also a `summarize()` function that should work the same, but sometimes may not. Eliana highlighted this, and the recommendation is to use the `summarise()`! 
+Disclaimer: There is also a `summarize()` function that should work the same, but sometimes may not. The recommendation is to use the `summarise()`! 
 
 ## join() functions
 
@@ -332,19 +372,24 @@ A `left_join()` adds variables from a second dataset to your original dataset. T
 
 ```{r}
 # -------------------------------------------------------------------------
+# recall our env dataset
+# -------------------------------------------------------------------------
+df_env_data
+
+# -------------------------------------------------------------------------
 # create second dataset
 # -------------------------------------------------------------------------
-myDepts <- data.frame(
-  department = c("IT", "Market", "HR"),
-  location = c("Building A", "Building B", "Building C"),
-  boss = c("John Doe", "Jane Smith", "Mike Brown")
+df_pollution <- data.frame(
+  pollution_level = c("Low", "High", "Medium"),
+  water_quality = c("drink and swim", "no swim", "swim only"),
+  super_fund_site = c(F, T, F)
 )
 
 # -------------------------------------------------------------------------
 # left_join
 # -------------------------------------------------------------------------
-myEmps_join<- left_join(x = myEmps, y = myDepts, by = "department")
-myEmps_join
+df_join <- left_join(x = df_env_data, y = df_pollution, by = "pollution_level")
+df_join
 
 ```
 
@@ -410,12 +455,16 @@ myRain <- data.frame(
                   0, 0, 12)
 )
 
+myRain
+
 # -------------------------------------------------------------------------
 # pivot so it's wide by station
 # -------------------------------------------------------------------------
 
 myRain_wide <- myRain %>% 
   pivot_wider(names_from = day, values_from = rainfall_mm)
+
+myRain_wide
 
 # -------------------------------------------------------------------------
 # get weekly total rainfall
