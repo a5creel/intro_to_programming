@@ -7,7 +7,7 @@ output: pdf_document
 
 # Introduction
 
-Try to solve each problem using day three's material and some minimal Googling. If you get stuck, please come to office hours which are 2-5pm in 301 prospect, room 101. 
+Try to solve each problem using day three's material and some minimal Googling. If you get stuck, please come to office hours which are 2-5pm in Sage 8A. 
 
 Do this problem set in a `.py` script. Use comments to indicate which question you're on. 
 

@@ -6,7 +6,7 @@ output: html_document
 ---
 # Introduction
 
-Try to solve each problem using day two's material and some minimal Googling. If you get stuck, please come to office hours which are 2-5pm in 301 prospect, room 101. 
+Try to solve each problem using day two's material and some minimal Googling. If you get stuck, please come to office hours which are 2-5pm in Sage 8A. 
 
 Remember to consider writing pseudo code prior to trying to code your answer to the problem! 
 
