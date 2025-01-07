@@ -1,7 +1,7 @@
 ---
 title: "Day 1, Lecture 2: Base R"
 author: "Andie Creel"
-date: "January, 2024"
+date: "January, 2025"
 output: 
   pdf_document:
     number_sections: true
@@ -29,7 +29,7 @@ Layout of RStudio:
   - Helps you load packages and other files to load
   - Default window when you're trying to get with a function from a package (we will get to this )
 - Console/Terminal
-  - where the code actually run 
+  - where the code actually runs
   - Scripts executes in console 
   - Code disappear in the console, whereas a script saves your code
   - To run something in the console, type it in and hit "enter"
@@ -136,7 +136,7 @@ myVec_string <- c(1, "b", "c")
 myVec_string # notice the 1 has been make char bc of the "
 ```
 
-**Vectors** are a useful way to store multiple observations. However, they only a single column of information. In EDS, we are interested in relating different variables to one another (i.e., How does temperature affect lion’s hunting success rate?) Two relate multiple variables together, we need make collections of data. The most basic way to do this is a **matrix.**
+**Vectors** are a useful way to store multiple observations. However, they only a single column of information. In environmental data science, we are interested in relating different variables to one another (i.e., How does temperature affect lion’s hunting success rate?) Two relate multiple variables together, we need make collections of data. The most basic way to do this is a **matrix.**
 
 ```{r}
 # we already have a vector of numeric data 
@@ -205,7 +205,7 @@ Let's build a dataframe with multiple datatypes (our lion data frame is all nume
 myPpl <- data.frame(
   name = c("Andie", "Bridger", "Scott"),
   gender = c("Female", "non-binary", "Male"),
-  male = c(TRUE, FALSE, FALSE),
+  male = c(FALSE, FALSE, TRUE),
   income_cat = c("middle", "poor", "rich"),
   park_dist_mi = c(1, 0.5, 0.1)
 )
