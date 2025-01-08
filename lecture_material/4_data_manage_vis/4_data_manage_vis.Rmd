@@ -65,7 +65,7 @@ There will be your `project_name/` folder. This is the file your R Project files
     - `3_analysis.R`
     - `4_figures.R`
 - `results/`: where you store final graphs and tables 
-- `manuscript/`: where you store your writing that (figures crossed) becomes your paper
+- `manuscript/`: where you store your writing that (figures crossed) becomes your paper or report
 - `presentations/`: Any presentations you prepare for the research project
     
 *In our new r project, let's create a clean and raw `data`, `script`, and `results` sub folder. You can do this with the file-green-plus button in the files tap (bottom right corner).*
@@ -364,7 +364,7 @@ These are okay, but not presentation ready.
 
 - You put hundreds of hours into data collection and analysis
 - Most people are just going to look at your figures
-- If bad, they won't read your paper 
+- If bad, they won't read your paper or listen to you as tell them something in an elevator
 - If good, they'll  know your key results from a glance
 - Figures make or break whether people know what you found
 

@@ -68,7 +68,7 @@ The teaching fellow is Eliana Stone
     - Best Practices for Data Vis
 
 ### Day Three 
-- Lecture Five: [Coding is Coding](lecture_material/6_python/6_python.pdf)
+- Lecture Five: [Coding is Coding](lecture_material/6_python_I.pdf)
     - Same material as Lecture 2, but in Python
     
     
@@ -82,6 +82,8 @@ The teaching fellow is Eliana Stone
     - "Pull" changes from GitHub to local computer
     - "Fork" someone's GitHub Repository so you can make changes to their files locally 
     
+- Bonus Lecture Seven: [Data Cleaning and Visualization in Python](lecture_material/7_python_II/7_python_II.pdf) (notes only)
+
 # Problem Sets 
 
 Navigate to the problem set folder to find the pdf and r markdown versions of the mini problem sets. They are designed to take around one hour and no more than two hours. 

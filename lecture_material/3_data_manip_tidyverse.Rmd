@@ -13,13 +13,18 @@ knitr::opts_chunk$set(echo = TRUE) # lets us see code in the pdf
 rm(list=ls()) # clears the environment 
 ```
 
+# Housekeeping 
+
+- You can turn in R scripts for the problem sets 
+- Name things what I do, because I might refer to them again later
+
 How I'd recommend following along for this lecture: have the pdf in front of you so you can follow along some of the points, but mostly write the code and comments in a script or R markdown. 
 
 Today, we're going to go through a lot of different concepts. I've tried to write this PDF so you can use it as a reference to refer back to repeatedly. 
 
 
 # Goal
-The goal of this lecture is:
+The goal today's lectures are:
 
 1) Learn about packages, the tidyverse
 2) Learn how to manipulate and clean data with tidyverse
@@ -28,7 +33,7 @@ The goal of this lecture is:
 
 # Why is data manipulation important 
 
-Backing up and remembering we're scientists
+Backing up and remembering we're scientists and researchers
 
 - We will have a hypothesis of how the world works
 - We want to construct a model that approximates that 
@@ -57,7 +62,7 @@ My personal example: American Time Use Survey and the value of outdoor leisure (
 
 **How can I install packages (user interface):**
 
-1. Go the the files/Plots/Packages quadrant
+1. Go the the Files/Plots/Packages quadrant
 2. Click on Packages
 3. Click Install
 4. Search for packages you want ("dplyr", "tidyr", "ggplot2"). 
@@ -98,7 +103,7 @@ library(ggplot2)
 # Manipulating and cleaning with dplyr 
 
 - dplyr is my most used package for data cleaning and manipulation 
-- Going to introduce the primary functions in the dplyr package
+- Going to introduce the primary functions in the dplyr package, and two from tidyr
     - `mutate()`
     - `if_else()`
     - `filter()`
@@ -106,8 +111,10 @@ library(ggplot2)
     - `group_by()`
     - `summarise()`
     - `left_join()`
+    - `pivot_longer()` (tidyr)
+    - `pivot_wider()` (tidyr)
 - There are a million ways to implement these functions 
-- Important for your solution strategy to know that these are the functions you can build around 
+- Important for your solution strategy to know that these are the functions you can build with 
 - I would say 90% of my data cleaning is different combinations of these functions
 - Why use dplyr instead of base R?
     - It's faster and more memory efficient (good for large data sets)
@@ -143,7 +150,7 @@ identical(myBase, myDplyr)
 # -------------------------------------------------------------------------
 
 # Base R
-for (i in seq_along(myBase$park_dist)) {
+for (i in 1:3) {
   myBase$park_dist[i] <- myBase$park_dist[i] + 1 # everyone move one mile 
 }
 myBase
@@ -294,7 +301,7 @@ df_env_data_clean
 
 You have a data set with more columns than you need. Sometimes you want to only work with some of the variables, and it is space eﬀicient to get rid of the rest.
 
-For example, let’s say you’re only interested in the polution at diffent locations, not the species richness.
+For example, let’s say you’re only interested in the pollution at different locations, not the species richness.
 
 ```{r}
 # -------------------------------------------------------------------------
@@ -319,9 +326,12 @@ Let’s work with a longer version of our ecosystem dataset
 # -------------------------------------------------------------------------
 
 df_env_long <- data.frame(
-    ecosystem = c("Forest", "Desert", "Wetland", "Grassland", "Urban", "Forest", "Desert", "Wetland", "Grassland", "Urban"),
-    species_richness = c(120, 45, 80, 60, 30, 110, 50, 85, 65, 35),
-    pollution_level = c("Low", "High", "Medium", "Low", "High", "Low", "High", "Medium", "Low", "High")
+    ecosystem = c("Forest", "Desert", "Wetland", "Grassland", "Urban", 
+                  "Forest", "Desert", "Wetland", "Urban", "Urban"),
+    species_richness = c(120, 45, 80, 60, 30, 
+                         110, 50, 85, 65, 35),
+    pollution_level = c("Low", "High", "Medium", "Low", "High", 
+                        "Low", "High", "Medium", "Low", "High")
 )
 
 # display the dataset
@@ -350,7 +360,8 @@ summary_table <- df_env_long %>%
     group_by(ecosystem) %>%
     summarise(
         mean_species_richness = mean(species_richness),
-        total_species_richness = sum(species_richness)
+        total_species_richness = sum(species_richness), 
+        count = n()
     )
 
 # display the summary table
@@ -438,7 +449,7 @@ myTemps_long
 
 ## `pivot_wider()`
 
-I usually pivot data frames from a long format to a wide format when the model I want to aggregate the data i.e., I want the data to be *less* granular. Usually you want data to me more grandular, but there are cases where one data set is less granular than another, and so you need them to match in order to merge them together. 
+I usually pivot data frames from a long format to a wide format when the model I want to aggregate the data i.e., I want the data to be *less* granular. Usually you want data to me more granular (*i.e.*, detailed), but there are cases where one data set is less granular than another, and so you need them to match in order to merge them together. 
 
 Ex. You have one data set that is long by day. You want to combine it with another data set that isn't long by day and instead is only long by station and week. Therefore you want to get the total weekly rainfall, instead of having it as daily rainfall. 
 
