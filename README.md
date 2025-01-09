@@ -56,6 +56,8 @@ The teaching fellow is Eliana Stone
     - `left_join()`
     - `pivot_longer()`
     - `pivot_wider()`
+- [script from class](class_scripts/2025/day_2_0_script.R)
+    
     
 - Lecture four: [Data Management and Visualization](lecture_material/4_data_manage_vis/4_data_manage_vis.pdf)
 
@@ -66,13 +68,16 @@ The teaching fellow is Eliana Stone
     - Data Visualization 
     - Results Export
     - Best Practices for Data Vis
+- [data cleaning script from class](class_scripts/2025/day_2_1_data_cleaning.R)
+- [data vis script from class](class_scripts/2025/day_2_1_data_cleaning.R)
+
 
 ### Day Three 
-- Lecture Five: [Coding is Coding](lecture_material/6_python_I.pdf)
+- Lecture Five: [Coding is Coding](lecture_material/5_python_I.pdf)
     - Same material as Lecture 2, but in Python
     
     
-- Lecture Six: [Version Control with GitHub](lecture_material/5_github.pdf)
+- Lecture Six: [Version Control with GitHub](lecture_material/6_github.pdf)
 
     - Why use GitHub
     - Create a GitHub account
