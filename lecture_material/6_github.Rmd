@@ -1,7 +1,7 @@
 ---
 title: "Day 3, Lecture Two: Version Control with GitHub"
 author: "Andie Creel"
-date: "January, 2023"
+date: "January, 2025"
 output: 
   pdf_document:
     number_sections: true
@@ -48,8 +48,9 @@ knitr::opts_chunk$set(echo = TRUE)
 
 # Set Up Git
 
-- Configure your Git installation with your name and email. This information will be attached to your commits.
-- Open your **terminal** (Command Prompt on Windows) and enter the following commands. *Remember that terminal is different from console.*:
+- You need to configure your Git installation with your name and email. This information will be attached to your commits.
+- Open RStudio and go to the Terminal Tab (next to Console)
+- You could also open your **terminal** (Command Prompt on Windows) and enter the following commands. *Remember that terminal is different from console.*:
 
 ```{bash, eval=FALSE}
 git config --global user.name "Your Name"
@@ -59,8 +60,7 @@ git config --global user.email "your_email@example.com"
 
 # Integrate Git with RStudio
 
-- Open RStudio.
-- Go to Tools (far right on tool bar) > Global Options > Git/SVN.
+- In R Studio, Go to Tools (far right on tool bar) > Global Options > Git/SVN.
 - Ensure that the path to the Git executable is correctly set.
 <!-- - Figures crossed this just goes as planned! Hopefully nothing to actually do here.  -->
 
@@ -99,7 +99,14 @@ On this step we're going to need to enter our "password." GitHub doesn't let us 
 - Developer Settings: Scroll down to the bottom of the sidebar and click on "Developer settings."
 - Personal Access Tokens: In the left sidebar, click on "Personal access tokens."
 - Generate New Token: Click on "Generate new token," give your token a descriptive name, and set the expiration according to your preference. *However ever often you feel like doing this.*
-- Select Scopes: Choose the scopes or permissions your token should have. For typical Git operations, select repo, which includes access to private repositories.
+- Select Scopes: Choose the scopes or permissions your token should have. For typical Git operations, select `All repositories`, which includes access to private repositories, and then give it the following permissions repo
+    - Actions: Read and write
+    - Commit statuses: Read and write 
+    - Contents: Read and write 
+    - Environments: Read and Write 
+    - Metadata: Read and Write (mandatory)
+    - Pull requests: Read and Write
+    - Variables: Read and Write
 - Generate Token: Click "Generate token" at the bottom. **Make sure to copy the token and keep it somewhere safe, as you won’t be able to see it again.**
 - Push your changes again 
 - Enter the PAT when prompted 
