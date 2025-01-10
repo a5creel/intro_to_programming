@@ -96,11 +96,9 @@ Navigate to the problem set folder to find the pdf and r markdown versions of th
 <!--# Notes to Self for next time 
 
 - Have an optional first session for downloading R and R Studio
-- Talk about booleans as indicator variables, show how to make an indicator variable. Say out boolean = logical = indicator
-- Show loop as one line of code at a time, then the loop. Like edit one row at a time, then show how a loop does that  
-- Go slower (plan for lectures to be longer, like 930 - 1) 
-  	- Cut first lecture down so that base R lecture has more time on first day
-- Do something different with python lecture
-  	- office hours require for everyone to come to day before so that we can get it on everyone's computer
-  	- google collab
-- Add something about R markdowns at some point? -->
+- Go slower? 
+  - even with 90 min lectures people thought it was fast 
+  - maybe split the first base R lecture into two lectures and have an on-the-board example of loops and indexing with i  
+  - if Base R splits to two, would need to get rid of lecture (maybe get rid of github?)
+- if GitHub stays, ask Eliana to do it with GitHub desktop instead -->
+
