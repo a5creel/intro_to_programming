@@ -100,5 +100,11 @@ Navigate to the problem set folder to find the pdf and r markdown versions of th
   - even with 90 min lectures people thought it was fast 
   - maybe split the first base R lecture into two lectures and have an on-the-board example of loops and indexing with i  
   - if Base R splits to two, would need to get rid of lecture (maybe get rid of github?)
-- if GitHub stays, ask Eliana to do it with GitHub desktop instead -->
+- if GitHub stays, ask Eliana to do it with GitHub desktop instead 
+  - maybe have github be option and on Friday afternoon 
+  - Remember that downloading git onto macs requires homebrew and installing homebrew will require pip and installing pip requires running some funky line of wack ass code in terminal first 
+- Introduce error reading 
+  - reading the error message in console 
+  - red squiggle line
+-->
 
