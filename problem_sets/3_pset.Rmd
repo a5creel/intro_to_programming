@@ -9,7 +9,9 @@ output: pdf_document
 
 Try to solve each problem using day three's material and some minimal Googling. If you get stuck, please come to office hours which are 2-5pm in Sage 8A. 
 
-Do this problem set in a `.py` script. Use comments to indicate which question you're on. 
+Do this problem set in a Google Collab. Use comments or text sections (text cells vs code cells) to indicate which question you're on. 
+
+Once you have completed your problem set, on Google Collab go to "File > Download > Download .ipynb" OR "File > Download > Download .ipynb" to download your file as a Jupyter Notebook OR a python script. You may turn in the Jupyter Notebook (your_pset.ipynb) or python script (your_pset.py) to canvas.
 
 This problem set should only take one hour. 
 
